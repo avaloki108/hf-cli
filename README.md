@@ -1,65 +1,36 @@
-# HuggingFace CLI
+# Hugging Face CLI
 
-[![HuggingFace CLI CI](https://github.com/huggingface/hf-cli/actions/workflows/ci.yml/badge.svg)](https://github.com/huggingface/hf-cli/actions/workflows/ci.yml)
-[![HuggingFace CLI E2E](https://github.com/huggingface/hf-cli/actions/workflows/e2e.yml/badge.svg)](https://github.com/huggingface/hf-cli/actions/workflows/e2e.yml)
-[![Version](https://img.shields.io/npm/v/@huggingface/hf-cli)](https://www.npmjs.com/package/@huggingface/hf-cli)
-[![License](https://img.shields.io/github/license/huggingface/hf-cli)](https://github.com/huggingface/hf-cli/blob/main/LICENSE)
-[![View Code Wiki](https://www.gstatic.com/_/boq-sdlc-agents-ui/_/r/YUi5dj2UWvE.svg)](https://codewiki.google/github.com/huggingface/hf-cli)
+[![Hugging Face CLI CI](https://github.com/avaloki108/hf-cli/actions/workflows/ci.yml/badge.svg)](https://github.com/avaloki108/hf-cli/actions/workflows/ci.yml)
 
-![HuggingFace CLI Screenshot](./docs/assets/hf-screenshot.png)
+Hugging Face CLI (`hf`) is an open-source AI agent that brings the power of Hugging Face's Inference API directly into your terminal. It allows you to interact with state-of-the-art open models like DeepSeek, Llama, and Qwen right from your command line.
 
-HuggingFace CLI is an open-source AI agent that brings the power of
-huggingface.co/chat directly into your terminal. It provides lightweight access
-to HuggingFace, giving you the most direct path from your prompt to our model.
+## 🚀 Key Features
 
-Learn all about HuggingFace CLI in our [documentation](https://hfcli.com/docs/).
-
-## 🚀 Why HuggingFace CLI?
-
-- **🔧 Built-in tools**: Google Search grounding, file operations, shell
-  commands, web fetching.
-- **🔌 Extensible**: MCP (Model Context Protocol) support for custom
-  integrations.
-- **💻 Terminal-first**: Designed for developers who live in the command line.
-- **🛡️ Open source**: Apache 2.0 licensed.
+- **Access Top Open Models**: Use models like `deepseek-ai/DeepSeek-V3.2-Exp`, `meta-llama/Llama-3.1-8B-Instruct`, and more via the Hugging Face Router.
+- **Terminal-First Experience**: Designed for developers who live in the command line.
+- **Context-Aware**: Can read files and understand your project structure.
+- **Extensible**: Support for custom tools and MCP (Model Context Protocol).
 
 ## 📦 Installation
 
-### Pre-requisites before installation
-
+### Prerequisites
 - Node.js version 20 or higher
-- macOS, Linux, or Windows
 
-### Quick Install
-
-#### Run instantly with npx
+### Install globally with npm
 
 ```bash
-# Using npx (no installation required)
-npx https://github.com/avaloki108/hf-cli
+npm install -g @huggingface/hf-cli
 ```
 
-#### Install globally with npm
+*(Note: Package name subject to change upon publication)*
 
-```bash
-npm install -g @avaloki108/hf-cli
-```
+## 🔐 Authentication
 
-#### Install globally with Homebrew (macOS/Linux)
+To use the Hugging Face CLI, you need a Hugging Face Access Token.
 
-```bash
-brew install hf-cli
-```
-
-## Release Cadence and Tags
-
-See [Releases](./docs/releases.md) for more details.
-
-### Preview
-
-New preview releases will be published each week at UTC 2359 on Tuesdays. These
-releases will not have been fully vetted and may contain regressions or other
-outstanding issues. Please help us test and install with `preview` tag.
+1.  **Get your token**: Go to [https://huggingface.co/settings/tokens](https://huggingface.co/settings/tokens) and create a new token (Read access is sufficient).
+2.  **Set the environment variable**:
+    You can set the `HF_TOKEN` environment variable in your shell or in a `.env` file in your project or home directory (`~/.hf-cli/.env`).
 
 ```bash
 npm install -g @avaloki108/hf-cli@preview
@@ -204,27 +175,22 @@ hf
 
 ### Basic Usage
 
-#### Start in current directory
+Start the interactive CLI:
 
 ```bash
 hf
 ```
 
-#### Include multiple directories
+### One-Shot Queries
 
-```bash
-hf --include-directories ../lib,../docs
-```
-
-#### Use specific model
+Ask a quick question without entering interactive mode:
 
 ```bash
 # Use a specific HuggingFace model
 hf -m Qwen/Qwen2.5-Coder-32B-Instruct
 
 # Or use DeepSeek
-hf -m deepseek-ai/DeepSeek-V3.2
-```
+hf -p "What is the capital of France?"```
 
 #### Use HuggingFace models
 
@@ -239,155 +205,43 @@ hf
 hf -m "meta-llama/Llama-3.3-70B-Instruct"
 ```
 
-#### Non-interactive mode for scripts
+### Select a Model
 
-Get a simple text response:
-
-```bash
-hf -p "Explain the architecture of this codebase"
-```
-
-For more advanced scripting, including how to parse JSON and handle errors, use
-the `--output-format json` flag to get structured output:
+Specify a model using the `-m` flag. The default model is `deepseek-ai/DeepSeek-V3.2-Exp`.
 
 ```bash
-hf -p "Explain the architecture of this codebase" --output-format json
+hf -m meta-llama/Llama-3.1-8B-Instruct
 ```
 
-For real-time event streaming (useful for monitoring long-running operations),
-use `--output-format stream-json` to get newline-delimited JSON events:
+**Supported Models:**
+- `deepseek-ai/DeepSeek-V3.2`
+- `deepseek-ai/DeepSeek-V3.2-Exp` (Default)
+- `moonshotai/Kimi-K2-Thinking`
+- `meta-llama/Llama-3.1-8B-Instruct`
+- `openai/gpt-oss-20b`
+- `zai-org/GLM-4.6`
+- `allenai/Olmo-3-32B-Think`
+- `openai/gpt-oss-120b`
+- `deepseek-ai/DeepSeek-R1`
+- `MiniMaxAI/MiniMax-M2`
+
+### Include Context
+
+Give the CLI access to files in your current directory:
 
 ```bash
-hf -p "Run tests and deploy" --output-format stream-json
+hf --include-directories ./src
 ```
 
-### Quick Examples
+## 📂 Configuration
 
-#### Start a new project
-
-```bash
-cd new-project/
-hf
-> Write me a Discord bot that answers questions using a FAQ.md file I will provide
-```
-
-#### Analyze existing code
-
-```bash
-git clone https://github.com/avaloki108/hf-cli
-cd hf-cli
-hf
-> Give me a summary of all of the changes that went in yesterday
-```
-
-## 📚 Documentation
-
-### Getting Started
-
-- [**Quickstart Guide**](./docs/get-started/index.md) - Get up and running
-  quickly.
-- [**Authentication Setup**](./docs/get-started/authentication.md) - Detailed
-  auth configuration.
-- [**Configuration Guide**](./docs/get-started/configuration.md) - Settings and
-  customization.
-- [**Keyboard Shortcuts**](./docs/cli/keyboard-shortcuts.md) - Productivity
-  tips.
-
-### Core Features
-
-- [**Commands Reference**](./docs/cli/commands.md) - All slash commands
-  (`/help`, `/chat`, etc).
-- [**Custom Commands**](./docs/cli/custom-commands.md) - Create your own
-  reusable commands.
-- [**Context Files (HF.md)**](./docs/cli/gemini-md.md) - Provide persistent
-  context to HuggingFace CLI.
-- [**Checkpointing**](./docs/cli/checkpointing.md) - Save and resume
-  conversations.
-- [**Token Caching**](./docs/cli/token-caching.md) - Optimize token usage.
-
-### Tools & Extensions
-
-- [**Built-in Tools Overview**](./docs/tools/index.md)
-  - [File System Operations](./docs/tools/file-system.md)
-  - [Shell Commands](./docs/tools/shell.md)
-  - [Web Fetch & Search](./docs/tools/web-fetch.md)
-- [**MCP Server Integration**](./docs/tools/mcp-server.md) - Extend with custom
-  tools.
-- [**Custom Extensions**](./docs/extensions/index.md) - Build and share your own
-  commands.
-
-### Advanced Topics
-
-- [**Headless Mode (Scripting)**](./docs/cli/headless.md) - Use HuggingFace CLI
-  in automated workflows.
-- [**Architecture Overview**](./docs/architecture.md) - How HuggingFace CLI
-  works.
-- [**IDE Integration**](./docs/ide-integration/index.md) - VS Code companion.
-- [**Sandboxing & Security**](./docs/cli/sandbox.md) - Safe execution
-  environments.
-- [**Trusted Folders**](./docs/cli/trusted-folders.md) - Control execution
-  policies by folder.
-- [**Enterprise Guide**](./docs/cli/enterprise.md) - Deploy and manage in a
-  corporate environment.
-- [**Telemetry & Monitoring**](./docs/cli/telemetry.md) - Usage tracking.
-- [**Tools API Development**](./docs/core/tools-api.md) - Create custom tools.
-- [**Local development**](./docs/local-development.md) - Local development
-  tooling.
-
-### Troubleshooting & Support
-
-- [**Troubleshooting Guide**](./docs/troubleshooting.md) - Common issues and
-  solutions.
-- [**FAQ**](./docs/faq.md) - Frequently asked questions.
-- Use `/bug` command to report issues directly from the CLI.
-
-### Using MCP Servers
-
-Configure MCP servers in `~/.hf-cli/settings.json` to extend HuggingFace CLI
-with custom tools:
-
-```text
-> @github List my open pull requests
-> @slack Send a summary of today's commits to #dev channel
-> @database Run a query to find inactive users
-```
-
-See the [MCP Server Integration guide](./docs/tools/mcp-server.md) for setup
-instructions.
+Global configuration is stored in `~/.hf-cli`. You can place a `.env` file there to persist your `HF_TOKEN`.
 
 ## 🤝 Contributing
 
-We welcome contributions! HuggingFace CLI is fully open source (Apache 2.0), and
-we encourage the community to:
-
-- Report bugs and suggest features.
-- Improve documentation.
-- Submit code improvements.
-- Share your MCP servers and extensions.
-
-See our [Contributing Guide](./CONTRIBUTING.md) for development setup, coding
-standards, and how to submit pull requests.
-
-Check our [Official Roadmap](https://github.com/orgs/google-gemini/projects/11)
-for planned features and priorities.
-
-## 📖 Resources
-
-- **[Official Roadmap](./ROADMAP.md)** - See what's coming next.
-- **[Changelog](./docs/changelogs/index.md)** - See recent notable updates.
-- **[NPM Package](https://www.npmjs.com/package/@huggingface/hf-cli)** - Package
-  registry.
-- **[GitHub Issues](https://github.com/huggingface/hf-cli/issues)** - Report
-  bugs or request features.
-- **[Security Advisories](https://github.com/huggingface/hf-cli/security/advisories)** -
-  Security updates.
-
-### Uninstall
-
-See the [Uninstall Guide](docs/cli/uninstall.md) for removal instructions.
+Contributions are welcome! Please submit pull requests to the [GitHub repository](https://github.com/avaloki108/hf-cli).
 
 ## 📄 Legal
 
-- **License**: [Apache License 2.0](LICENSE)
-- **Terms of Service**: [Terms & Privacy](./docs/tos-privacy.md)
-- **Security**: [Security Policy](SECURITY.md)
+- **License**: Apache 2.0
+

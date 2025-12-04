@@ -9,7 +9,7 @@ export const DEFAULT_GEMINI_MODEL = 'gemini-2.5-pro';
 export const DEFAULT_GEMINI_FLASH_MODEL = 'gemini-2.5-flash';
 export const DEFAULT_GEMINI_FLASH_LITE_MODEL = 'gemini-2.5-flash-lite';
 
-export const DEFAULT_GEMINI_MODEL_AUTO = 'auto';
+export const DEFAULT_GEMINI_MODEL_AUTO = 'deepseek-ai/DeepSeek-V3.2-Exp';
 
 // Model aliases for user convenience.
 export const GEMINI_MODEL_ALIAS_PRO = 'pro';

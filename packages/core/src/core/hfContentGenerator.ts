@@ -1,9 +1,3 @@
-/**
- * @license
- * Copyright 2025 Google LLC
- * SPDX-License-Identifier: Apache-2.0
- */
-
 import {
   type GenerateContentParameters,
   type GenerateContentResponse,
@@ -15,47 +9,54 @@ import {
   type Part,
   FinishReason,
 } from '@google/genai';
-import { HfInference } from '@huggingface/inference';
+import OpenAI from 'openai';
 import type { ContentGenerator } from './contentGenerator.js';
 
 export class HfContentGenerator implements ContentGenerator {
-  private hf: HfInference;
+  private client: OpenAI;
   private model: string;
 
   constructor(token: string, model: string) {
-    this.hf = new HfInference(token);
+    this.client = new OpenAI({
+      baseURL: 'https://router.huggingface.co/v1',
+      apiKey: token,
+    });
     this.model = model;
   }
 
-  private contentToString(content: Content): string {
-    if (!content.parts) return '';
-    return content.parts.map((part: Part) => part.text || '').join('');
+  private contentToMessage(content: Content): OpenAI.Chat.Completions.ChatCompletionMessageParam {
+    const role = content.role === 'model' ? 'assistant' : 'user';
+    const text = content.parts?.map((part: Part) => part.text || '').join('') || '';
+    return {
+      role,
+      content: text,
+    } as OpenAI.Chat.Completions.ChatCompletionMessageParam;
   }
 
-  private contentsToString(contents: Content[]): string {
-    return contents.map((c) => this.contentToString(c)).join('\n');
+  private contentsToMessages(contents: Content[]): OpenAI.Chat.Completions.ChatCompletionMessageParam[] {
+    return contents.map((c) => this.contentToMessage(c));
   }
 
   async generateContent(
     request: GenerateContentParameters,
     _userPromptId: string,
   ): Promise<GenerateContentResponse> {
-    const prompt = this.contentsToString(request.contents as Content[]);
+    const messages = this.contentsToMessages(request.contents as Content[]);
 
-    const response = await this.hf.textGeneration({
+    const response = await this.client.chat.completions.create({
       model: this.model,
-      inputs: prompt,
-      parameters: {
-        max_new_tokens: 1024,
-        return_full_text: false,
-      },
+      messages,
+      max_tokens: 1024,
     });
+
+    const choice = response.choices[0];
+    const content = choice.message.content || '';
 
     return {
       candidates: [
         {
           content: {
-            parts: [{ text: response.generated_text }],
+            parts: [{ text: content }],
             role: 'model',
           },
           finishReason: FinishReason.STOP,
@@ -68,27 +69,26 @@ export class HfContentGenerator implements ContentGenerator {
     request: GenerateContentParameters,
     _userPromptId: string,
   ): Promise<AsyncGenerator<GenerateContentResponse>> {
-    const prompt = this.contentsToString(request.contents as Content[]);
-    const hf = this.hf;
+    const messages = this.contentsToMessages(request.contents as Content[]);
+    const client = this.client;
     const model = this.model;
 
     async function* streamGenerator(): AsyncGenerator<GenerateContentResponse> {
-      const stream = hf.textGenerationStream({
+      const stream = await client.chat.completions.create({
         model,
-        inputs: prompt,
-        parameters: {
-          max_new_tokens: 1024,
-          return_full_text: false,
-        },
+        messages,
+        max_tokens: 1024,
+        stream: true,
       });
 
       for await (const chunk of stream) {
-        if (chunk.token.text) {
+        const content = chunk.choices[0]?.delta?.content || '';
+        if (content) {
           yield {
             candidates: [
               {
                 content: {
-                  parts: [{ text: chunk.token.text }],
+                  parts: [{ text: content }],
                   role: 'model',
                 },
               },
@@ -104,7 +104,9 @@ export class HfContentGenerator implements ContentGenerator {
   async countTokens(
     request: CountTokensParameters,
   ): Promise<CountTokensResponse> {
-    const text = this.contentsToString(request.contents as Content[]);
+    // Simple estimation: 4 chars per token
+    const messages = this.contentsToMessages(request.contents as Content[]);
+    const text = messages.map(m => m.content).join('');
     return {
       totalTokens: Math.ceil(text.length / 4),
     };

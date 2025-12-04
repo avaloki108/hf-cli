@@ -45,7 +45,7 @@ export function validateAuthMethod(authMethod: string): string | null {
   if (authMethod === AuthType.USE_HF) {
     if (!process.env['HF_TOKEN']) {
       return (
-        'When using HuggingFace, you must specify the HF_TOKEN environment variable.\n' +
+        'When using Hugging Face, you must specify the HF_TOKEN environment variable.\n' +
         'Update your environment and try again (no reload needed if using .env)!'
       );
     }
