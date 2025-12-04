@@ -1,12 +1,12 @@
-# Gemini CLI model selection (`/model` command)
+# HuggingFace CLI model selection (`/model` command)
 
-Select your Gemini CLI model. The `/model` command opens a dialog where you can
-configure the model used by Gemini CLI, giving you more control over your
-results.
+Select your HuggingFace CLI model. The `/model` command opens a dialog where you
+can configure the model used by HuggingFace CLI, giving you more control over
+your results.
 
 ## How to use the `/model` command
 
-Use the following command in Gemini CLI:
+Use the following command in HuggingFace CLI:
 
 ```
 /model
@@ -25,20 +25,20 @@ Running this command will open a dialog with your model options:
 
 Note: Gemini 3 is not currently available on all account types. To learn more
 about Gemini 3 access, refer to
-[Gemini 3 Pro on Gemini CLI](../get-started/gemini-3.md).
+[Gemini 3 Pro on HuggingFace CLI](../get-started/gemini-3.md).
 
 To enable Gemini 3 Pro (if available), enable
 [**Preview features** by using the `settings` command](../cli/settings.md). Once
-enabled, Gemini CLI will attempt to use Gemini 3 Pro when you select **Auto** or
-**Pro**. Both **Auto** and **Pro** will try to use Gemini 3 Pro before falling
-back to Gemini 2.5 Pro.
+enabled, HuggingFace CLI will attempt to use Gemini 3 Pro when you select
+**Auto** or **Pro**. Both **Auto** and **Pro** will try to use Gemini 3 Pro
+before falling back to Gemini 2.5 Pro.
 
 You can also use the `--model` flag to specify a particular Gemini model on
 startup. For more details, refer to the
 [configuration documentation](./configuration.md).
 
 Changes to these settings will be applied to all subsequent interactions with
-Gemini CLI.
+HuggingFace CLI.
 
 ## Best practices for model selection
 

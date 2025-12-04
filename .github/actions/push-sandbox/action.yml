@@ -70,11 +70,11 @@ runs:
       id: 'docker_build'
       shell: 'bash'
       env:
-        GEMINI_SANDBOX_IMAGE_TAG: '${{ steps.image_tag.outputs.FINAL_TAG }}'
-        GEMINI_SANDBOX: 'docker'
+        HF_SANDBOX_IMAGE_TAG: '${{ steps.image_tag.outputs.FINAL_TAG }}'
+        HF_SANDBOX: 'docker'
       run: |-
         npm run build:sandbox -- \
-          --image google/gemini-cli-sandbox:${{ steps.image_tag.outputs.FINAL_TAG }} \
+          --image google/hf-cli-sandbox:${{ steps.image_tag.outputs.FINAL_TAG }} \
           --output-file final_image_uri.txt
         echo "uri=$(cat final_image_uri.txt)" >> $GITHUB_OUTPUT
     - name: 'publish'

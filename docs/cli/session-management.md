@@ -1,14 +1,14 @@
 # Session Management
 
-Gemini CLI includes robust session management features that automatically save
-your conversation history. This allows you to interrupt your work and resume
-exactly where you left off, review past interactions, and manage your
+HuggingFace CLI includes robust session management features that automatically
+save your conversation history. This allows you to interrupt your work and
+resume exactly where you left off, review past interactions, and manage your
 conversation history effectively.
 
 ## Automatic Saving
 
-Every time you interact with Gemini CLI, your session is automatically saved.
-This happens in the background without any manual intervention.
+Every time you interact with HuggingFace CLI, your session is automatically
+saved. This happens in the background without any manual intervention.
 
 - **What is saved:** The complete conversation history, including:
   - Your prompts and the model's responses.
@@ -106,7 +106,7 @@ gemini --delete-session 2
 
 ## Configuration
 
-You can configure how Gemini CLI manages your session history in your
+You can configure how HuggingFace CLI manages your session history in your
 `settings.json` file.
 
 ### Session Retention

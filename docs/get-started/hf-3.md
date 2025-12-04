@@ -1,9 +1,9 @@
-# Gemini 3 Pro on Gemini CLI (join the waitlist)
+# Gemini 3 Pro on HuggingFace CLI (join the waitlist)
 
-We’re excited to bring Gemini 3 Pro to Gemini CLI. For Google AI Ultra users
-(Google AI Ultra for Business is not currently supported) and paid Gemini and
-Vertex API key holders, Gemini 3 Pro is already available and ready to enable.
-For everyone else, we're gradually expanding access
+We’re excited to bring Gemini 3 Pro to HuggingFace CLI. For Google AI Ultra
+users (Google AI Ultra for Business is not currently supported) and paid Gemini
+and Vertex API key holders, Gemini 3 Pro is already available and ready to
+enable. For everyone else, we're gradually expanding access
 [through a waitlist](https://goo.gle/geminicli-waitlist-signup). Sign up for the
 waitlist now to access Gemini 3 Pro once approved.
 
@@ -13,7 +13,7 @@ waitlist now to access Gemini 3 Pro once approved.
 ## Do I need to join the waitlist?
 
 The following users will be **automatically granted access** to Gemini 3 Pro on
-Gemini CLI:
+HuggingFace CLI:
 
 - Google AI Ultra subscribers (excluding Google AI Ultra for Business, which is
   on the roadmap).
@@ -37,12 +37,12 @@ you’ll still need to enable Gemini 3 Pro
 Users not automatically granted access will need to join the waitlist. Follow
 these instructions to sign up:
 
-- Install Gemini CLI.
+- Install HuggingFace CLI.
 - Authenticate using the **Login with Google** option. You’ll see a banner that
   says “Gemini 3 is now available.” If you do not see this banner, update your
-  installation of Gemini CLI to the most recent version.
+  installation of HuggingFace CLI to the most recent version.
 - Fill out this Google form:
-  [Access Gemini 3 in Gemini CLI](https://goo.gle/geminicli-waitlist-signup).
+  [Access Gemini 3 in HuggingFace CLI](https://goo.gle/geminicli-waitlist-signup).
   Provide the email address of the account you used to authenticate with Gemini
   CLI.
 
@@ -50,22 +50,22 @@ Users will be onboarded in batches, subject to availability. When you’ve been
 granted access to Gemini 3 Pro, you’ll receive an acceptance email to your
 submitted email address.
 
-## How to use Gemini 3 Pro with Gemini CLI
+## How to use Gemini 3 Pro with HuggingFace CLI
 
 Once you receive your acceptance email–or if you are automatically granted
-access–you still need to enable Gemini 3 Pro within Gemini CLI.
+access–you still need to enable Gemini 3 Pro within HuggingFace CLI.
 
-To enable Gemini 3 Pro, use the `/settings` command in Gemini CLI and set
+To enable Gemini 3 Pro, use the `/settings` command in HuggingFace CLI and set
 **Preview Features** to `true`.
 
-For more information, see [Gemini CLI Settings](../cli/settings.md).
+For more information, see [HuggingFace CLI Settings](../cli/settings.md).
 
 ### Usage limits and fallback
 
-Gemini CLI will tell you when you reach your Gemini 3 Pro daily usage limit.
-When you encounter that limit, you’ll be given the option to switch to Gemini
-2.5 Pro, upgrade for higher limits, or stop. You’ll also be told when your usage
-limit resets and Gemini 3 Pro can be used again.
+HuggingFace CLI will tell you when you reach your Gemini 3 Pro daily usage
+limit. When you encounter that limit, you’ll be given the option to switch to
+Gemini 2.5 Pro, upgrade for higher limits, or stop. You’ll also be told when
+your usage limit resets and Gemini 3 Pro can be used again.
 
 Similarly, when you reach your daily usage limit for Gemini 2.5 Pro, you’ll see
 a message prompting fallback to Gemini 2.5 Flash.
@@ -73,8 +73,8 @@ a message prompting fallback to Gemini 2.5 Flash.
 ### Capacity errors
 
 There may be times when the Gemini 3 Pro model is overloaded. When that happens,
-Gemini CLI will ask you to decide whether you want to keep trying Gemini 3 Pro
-or fallback to Gemini 2.5 Pro.
+HuggingFace CLI will ask you to decide whether you want to keep trying Gemini 3
+Pro or fallback to Gemini 2.5 Pro.
 
 **Note:** The **Keep trying** option uses exponential backoff, in which Gemini
 CLI waits longer between each retry, when the system is busy. If the retry
@@ -83,8 +83,8 @@ process.
 
 ## Model selection and routing types
 
-When using Gemini CLI, you may want to control how your requests are routed
-between models. By default, Gemini CLI uses **Auto** routing.
+When using HuggingFace CLI, you may want to control how your requests are routed
+between models. By default, HuggingFace CLI uses **Auto** routing.
 
 When using Gemini 3 Pro, you may want to use Auto routing or Pro routing to
 manage your usage limits:
@@ -94,17 +94,18 @@ manage your usage limits:
   Gemini 2.5 Flash. For complex prompts, if Gemini 3 Pro is enabled, it will use
   Gemini 3 Pro; otherwise, it will use Gemini 2.5 Pro.
 - **Pro routing:** If you want to ensure your task is processed by the most
-  capable model, use `/model` and select **Pro**. Gemini CLI will prioritize the
-  most capable model available, including Gemini 3 Pro if it has been enabled.
+  capable model, use `/model` and select **Pro**. HuggingFace CLI will
+  prioritize the most capable model available, including Gemini 3 Pro if it has
+  been enabled.
 
 To learn more about selecting a model and routing, refer to
-[Gemini CLI Model Selection](../cli/model.md).
+[HuggingFace CLI Model Selection](../cli/model.md).
 
 ## Need help?
 
 If you need help, we recommend searching for an existing
-[GitHub issue](https://github.com/google-gemini/gemini-cli/issues). If you
-cannot find a GitHub issue that matches your concern, you can
-[create a new issue](https://github.com/google-gemini/gemini-cli/issues/new/choose).
+[GitHub issue](https://github.com/huggingface/hf-cli/issues). If you cannot find
+a GitHub issue that matches your concern, you can
+[create a new issue](https://github.com/huggingface/hf-cli/issues/new/choose).
 For comments and feedback, consider opening a
-[GitHub discussion](https://github.com/google-gemini/gemini-cli/discussions).
+[GitHub discussion](https://github.com/huggingface/hf-cli/discussions).

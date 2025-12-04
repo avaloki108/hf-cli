@@ -1,8 +1,8 @@
-# Gemini CLI hooks
+# HuggingFace CLI hooks
 
-Hooks are scripts or programs that Gemini CLI executes at specific points in the
-agentic loop, allowing you to intercept and customize behavior without modifying
-the CLI's source code.
+Hooks are scripts or programs that HuggingFace CLI executes at specific points
+in the agentic loop, allowing you to intercept and customize behavior without
+modifying the CLI's source code.
 
 See [writing hooks guide](writing-hooks.md) for a tutorial on creating your
 first hook and a comprehensive example.
@@ -22,14 +22,14 @@ With hooks, you can:
 - **Optimize behavior:** Dynamically adjust tool selection or model parameters
 
 Hooks run synchronously as part of the agent loop—when a hook event fires,
-Gemini CLI waits for all matching hooks to complete before continuing.
+HuggingFace CLI waits for all matching hooks to complete before continuing.
 
 ## Core concepts
 
 ### Hook events
 
-Hooks are triggered by specific events in Gemini CLI's lifecycle. The following
-table lists all available hook events:
+Hooks are triggered by specific events in HuggingFace CLI's lifecycle. The
+following table lists all available hook events:
 
 | Event                 | When It Fires                                 | Common Use Cases                           |
 | --------------------- | --------------------------------------------- | ------------------------------------------ |
@@ -47,7 +47,7 @@ table lists all available hook events:
 
 ### Hook types
 
-Gemini CLI currently supports **command hooks** that run shell commands or
+HuggingFace CLI currently supports **command hooks** that run shell commands or
 scripts:
 
 ```json
@@ -416,7 +416,7 @@ numbers override lower numbers):
 1. **System defaults:** Built-in default settings (lowest precedence)
 2. **User settings:** `~/.gemini/settings.json`
 3. **Project settings:** `.gemini/settings.json` in your project directory
-4. **System settings:** `/etc/gemini-cli/settings.json` (highest precedence)
+4. **System settings:** `/etc/hf-cli/settings.json` (highest precedence)
 
 Within each level, hooks run in the order they are declared in the
 configuration.
@@ -530,20 +530,20 @@ This command:
 
 ### Event name mapping
 
-| Claude Code        | Gemini CLI     |
-| ------------------ | -------------- |
-| `PreToolUse`       | `BeforeTool`   |
-| `PostToolUse`      | `AfterTool`    |
-| `UserPromptSubmit` | `BeforeAgent`  |
-| `Stop`             | `AfterAgent`   |
-| `Notification`     | `Notification` |
-| `SessionStart`     | `SessionStart` |
-| `SessionEnd`       | `SessionEnd`   |
-| `PreCompact`       | `PreCompress`  |
+| Claude Code        | HuggingFace CLI |
+| ------------------ | --------------- |
+| `PreToolUse`       | `BeforeTool`    |
+| `PostToolUse`      | `AfterTool`     |
+| `UserPromptSubmit` | `BeforeAgent`   |
+| `Stop`             | `AfterAgent`    |
+| `Notification`     | `Notification`  |
+| `SessionStart`     | `SessionStart`  |
+| `SessionEnd`       | `SessionEnd`    |
+| `PreCompact`       | `PreCompress`   |
 
 ### Tool name mapping
 
-| Claude Code | Gemini CLI        |
+| Claude Code | HuggingFace CLI   |
 | ----------- | ----------------- |
 | `Bash`      | `RunShellCommand` |
 | `Edit`      | `Edit`            |
@@ -556,5 +556,6 @@ This command:
 - [Best Practices](best-practices.md) - Security, performance, and debugging
 - [Custom Commands](../cli/custom-commands.md) - Create reusable prompt
   shortcuts
-- [Configuration](../cli/configuration.md) - Gemini CLI configuration options
+- [Configuration](../cli/configuration.md) - HuggingFace CLI configuration
+  options
 - [Hooks Design Document](../hooks-design.md) - Technical architecture details

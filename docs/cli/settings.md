@@ -1,11 +1,11 @@
-# Gemini CLI settings (`/settings` command)
+# HuggingFace CLI settings (`/settings` command)
 
-Control your Gemini CLI experience with the `/settings` command. The `/settings`
-command opens a dialog to view and edit all your Gemini CLI settings, including
-your UI experience, keybindings, and accessibility features.
+Control your HuggingFace CLI experience with the `/settings` command. The
+`/settings` command opens a dialog to view and edit all your HuggingFace CLI
+settings, including your UI experience, keybindings, and accessibility features.
 
-Your Gemini CLI settings are stored in a `settings.json` file. In addition to
-using the `/settings` command, you can also edit them in one of the following
+Your HuggingFace CLI settings are stored in a `settings.json` file. In addition
+to using the `/settings` command, you can also edit them in one of the following
 locations:
 
 - **User settings**: `~/.gemini/settings.json`
@@ -38,25 +38,25 @@ they appear in the UI.
 
 ### UI
 
-| UI Label                       | Setting                                  | Description                                                          | Default |
-| ------------------------------ | ---------------------------------------- | -------------------------------------------------------------------- | ------- |
-| Hide Window Title              | `ui.hideWindowTitle`                     | Hide the window title bar.                                           | `false` |
-| Show Status in Title           | `ui.showStatusInTitle`                   | Show Gemini CLI status and thoughts in the terminal window title.    | `false` |
-| Hide Tips                      | `ui.hideTips`                            | Hide helpful tips in the UI.                                         | `false` |
-| Hide Banner                    | `ui.hideBanner`                          | Hide the application banner.                                         | `false` |
-| Hide Context Summary           | `ui.hideContextSummary`                  | Hide the context summary (GEMINI.md, MCP servers) above the input.   | `false` |
-| Hide CWD                       | `ui.footer.hideCWD`                      | Hide the current working directory path in the footer.               | `false` |
-| Hide Sandbox Status            | `ui.footer.hideSandboxStatus`            | Hide the sandbox status indicator in the footer.                     | `false` |
-| Hide Model Info                | `ui.footer.hideModelInfo`                | Hide the model name and context usage in the footer.                 | `false` |
-| Hide Context Window Percentage | `ui.footer.hideContextPercentage`        | Hides the context window remaining percentage.                       | `true`  |
-| Hide Footer                    | `ui.hideFooter`                          | Hide the footer from the UI.                                         | `false` |
-| Show Memory Usage              | `ui.showMemoryUsage`                     | Display memory usage information in the UI.                          | `false` |
-| Show Line Numbers              | `ui.showLineNumbers`                     | Show line numbers in the chat.                                       | `false` |
-| Show Citations                 | `ui.showCitations`                       | Show citations for generated text in the chat.                       | `false` |
-| Use Full Width                 | `ui.useFullWidth`                        | Use the entire width of the terminal for output.                     | `true`  |
-| Use Alternate Screen Buffer    | `ui.useAlternateBuffer`                  | Use an alternate screen buffer for the UI, preserving shell history. | `true`  |
-| Disable Loading Phrases        | `ui.accessibility.disableLoadingPhrases` | Disable loading phrases for accessibility.                           | `false` |
-| Screen Reader Mode             | `ui.accessibility.screenReader`          | Render output in plain-text to be more screen reader accessible.     | `false` |
+| UI Label                       | Setting                                  | Description                                                            | Default |
+| ------------------------------ | ---------------------------------------- | ---------------------------------------------------------------------- | ------- |
+| Hide Window Title              | `ui.hideWindowTitle`                     | Hide the window title bar.                                             | `false` |
+| Show Status in Title           | `ui.showStatusInTitle`                   | Show HuggingFace CLI status and thoughts in the terminal window title. | `false` |
+| Hide Tips                      | `ui.hideTips`                            | Hide helpful tips in the UI.                                           | `false` |
+| Hide Banner                    | `ui.hideBanner`                          | Hide the application banner.                                           | `false` |
+| Hide Context Summary           | `ui.hideContextSummary`                  | Hide the context summary (GEMINI.md, MCP servers) above the input.     | `false` |
+| Hide CWD                       | `ui.footer.hideCWD`                      | Hide the current working directory path in the footer.                 | `false` |
+| Hide Sandbox Status            | `ui.footer.hideSandboxStatus`            | Hide the sandbox status indicator in the footer.                       | `false` |
+| Hide Model Info                | `ui.footer.hideModelInfo`                | Hide the model name and context usage in the footer.                   | `false` |
+| Hide Context Window Percentage | `ui.footer.hideContextPercentage`        | Hides the context window remaining percentage.                         | `true`  |
+| Hide Footer                    | `ui.hideFooter`                          | Hide the footer from the UI.                                           | `false` |
+| Show Memory Usage              | `ui.showMemoryUsage`                     | Display memory usage information in the UI.                            | `false` |
+| Show Line Numbers              | `ui.showLineNumbers`                     | Show line numbers in the chat.                                         | `false` |
+| Show Citations                 | `ui.showCitations`                       | Show citations for generated text in the chat.                         | `false` |
+| Use Full Width                 | `ui.useFullWidth`                        | Use the entire width of the terminal for output.                       | `true`  |
+| Use Alternate Screen Buffer    | `ui.useAlternateBuffer`                  | Use an alternate screen buffer for the UI, preserving shell history.   | `true`  |
+| Disable Loading Phrases        | `ui.accessibility.disableLoadingPhrases` | Disable loading phrases for accessibility.                             | `false` |
+| Screen Reader Mode             | `ui.accessibility.screenReader`          | Render output in plain-text to be more screen reader accessible.       | `false` |
 
 ### IDE
 

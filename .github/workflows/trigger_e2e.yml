@@ -11,7 +11,7 @@ on:
 
 jobs:
   save_repo_name:
-    runs-on: 'gemini-cli-ubuntu-16-core'
+    runs-on: 'hf-cli-ubuntu-16-core'
     steps:
       - name: 'Save Repo name'
         env:
@@ -26,7 +26,7 @@ jobs:
           path: 'pr/'
   trigger_e2e:
     name: 'Trigger e2e'
-    runs-on: 'gemini-cli-ubuntu-16-core'
+    runs-on: 'hf-cli-ubuntu-16-core'
     steps:
       - id: 'trigger-e2e'
         run: |
