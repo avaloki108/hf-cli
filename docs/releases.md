@@ -1,4 +1,4 @@
-# Gemini CLI releases
+# HuggingFace CLI releases
 
 ## `dev` vs `prod` environment
 
@@ -12,15 +12,15 @@ Dressing Room, which is Google's system for managing NPM packages in the
 `@google/**` namespace. The packages are all named `@google/**`.
 
 More information can be found about these systems in the
-[maintainer repo guide](https://github.com/google-gemini/maintainers-gemini-cli/blob/main/npm.md)
+[maintainer repo guide](https://github.com/google-gemini/maintainers-hf-cli/blob/main/npm.md)
 
 ### Package scopes
 
-| Package    | `prod` (Wombat Dressing Room) | `dev` (Github Private NPM Repo)           |
-| ---------- | ----------------------------- | ----------------------------------------- |
-| CLI        | @google/gemini-cli            | @google-gemini/gemini-cli                 |
-| Core       | @google/gemini-cli-core       | @google-gemini/gemini-cli-core A2A Server |
-| A2A Server | @google/gemini-cli-a2a-server | @google-gemini/gemini-cli-a2a-server      |
+| Package    | `prod` (Wombat Dressing Room)  | `dev` (Github Private NPM Repo)       |
+| ---------- | ------------------------------ | ------------------------------------- |
+| CLI        | @huggingface/hf-cli            | @google-gemini/hf-cli                 |
+| Core       | @huggingface/hf-cli-core       | @google-gemini/hf-cli-core A2A Server |
+| A2A Server | @huggingface/hf-cli-a2a-server | @google-gemini/hf-cli-a2a-server      |
 
 ## Release cadence and tags
 
@@ -44,7 +44,7 @@ These releases will not have been fully vetted and may contain regressions or
 other outstanding issues. Please help us test and install with `preview` tag.
 
 ```bash
-npm install -g @google/gemini-cli@preview
+npm install -g @huggingface/hf-cli@preview
 ```
 
 ### Stable
@@ -53,7 +53,7 @@ This will be the full promotion of last week's release + any bug fixes and
 validations. Use `latest` tag.
 
 ```bash
-npm install -g @google/gemini-cli@latest
+npm install -g @huggingface/hf-cli@latest
 ```
 
 ### Nightly
@@ -63,7 +63,7 @@ npm install -g @google/gemini-cli@latest
   there are pending validations and issues. Use `nightly` tag.
 
 ```bash
-npm install -g @google/gemini-cli@nightly
+npm install -g @huggingface/hf-cli@nightly
 ```
 
 ## Weekly release promotion
@@ -172,9 +172,9 @@ require a full release cycle.
       release administrator.
 5.  Click **Run workflow**.
 
-The workflow will then run `npm dist-tag add` for the appropriate `gemini-cli`,
-`gemini-cli-core` and `gemini-cli-a2a-server` packages, pointing the specified
-channel to the specified version.
+The workflow will then run `npm dist-tag add` for the appropriate `hf-cli`,
+`hf-cli-core` and `hf-cli-a2a-server` packages, pointing the specified channel
+to the specified version.
 
 ## Patching
 
@@ -374,12 +374,12 @@ packages are working as expected. This can be done by installing the packages
 locally and running a set of tests to ensure that they are functioning
 correctly.
 
-- `npx -y @google/gemini-cli@latest --version` to validate the push worked as
+- `npx -y @huggingface/hf-cli@latest --version` to validate the push worked as
   expected if you were not doing a rc or dev tag
-- `npx -y @google/gemini-cli@<release tag> --version` to validate the tag pushed
-  appropriately
+- `npx -y @huggingface/hf-cli@<release tag> --version` to validate the tag
+  pushed appropriately
 - _This is destructive locally_
-  `npm uninstall @google/gemini-cli && npm uninstall -g @google/gemini-cli && npm cache clean --force &&  npm install @google/gemini-cli@<version>`
+  `npm uninstall @huggingface/hf-cli && npm uninstall -g @huggingface/hf-cli && npm cache clean --force &&  npm install @huggingface/hf-cli@<version>`
 - Smoke testing a basic run through of exercising a few llm commands and tools
   is recommended to ensure that the packages are working as expected. We'll
   codify this more in the future.
@@ -391,7 +391,7 @@ creating a public GitHub release, you can trigger the workflow manually from the
 GitHub UI.
 
 1.  Go to the
-    [Actions tab](https://github.com/google-gemini/gemini-cli/actions/workflows/release-manual.yml)
+    [Actions tab](https://github.com/google-gemini/hf-cli/actions/workflows/release-manual.yml)
     of the repository.
 2.  Click on the "Run workflow" dropdown.
 3.  Leave the `dry_run` option checked (`true`).
@@ -423,7 +423,7 @@ This command will do the following:
 You can then inspect the generated tarballs to ensure that they contain the
 correct files and that the `package.json` files have been updated correctly. The
 tarballs will be created in the root of each package's directory (e.g.,
-`packages/cli/google-gemini-cli-0.1.6.tgz`).
+`packages/cli/google-hf-cli-0.1.6.tgz`).
 
 By performing a dry run, you can be confident that your changes to the packaging
 process are correct and that the packages will be published successfully.
@@ -457,10 +457,10 @@ Here are the key stages:
 **Stage 3: Publishing standard packages to NPM**
 
 - **What happens:** The `npm publish` command is run for the
-  `@google/gemini-cli-core` and `@google/gemini-cli` packages.
+  `@huggingface/hf-cli-core` and `@huggingface/hf-cli` packages.
 - **Why:** This publishes them as standard Node.js packages. Users installing
-  via `npm install -g @google/gemini-cli` will download these packages, and
-  `npm` will handle installing the `@google/gemini-cli-core` dependency
+  via `npm install -g @huggingface/hf-cli` will download these packages, and
+  `npm` will handle installing the `@huggingface/hf-cli-core` dependency
   automatically. The code in these packages is not bundled into a single file.
 
 **Stage 4: Assembling and creating the GitHub release asset**
@@ -496,14 +496,14 @@ executable that enables `npx` usage directly from the GitHub repository.
       `gemini.js` executable, are attached as assets to a new GitHub Release.
     - **Why:** This makes the single-file version of the CLI available for
       direct download and enables the
-      `npx https://github.com/google-gemini/gemini-cli` command, which downloads
-      and runs this specific bundled asset.
+      `npx https://github.com/google-gemini/hf-cli` command, which downloads and
+      runs this specific bundled asset.
 
 **Summary of artifacts**
 
 - **NPM:** Publishes standard, un-bundled Node.js packages. The primary artifact
   is the code in `packages/cli/dist`, which depends on
-  `@google/gemini-cli-core`.
+  `@huggingface/hf-cli-core`.
 - **GitHub release:** Publishes a single, bundled `gemini.js` file that contains
   all dependencies, for easy execution via `npx`.
 

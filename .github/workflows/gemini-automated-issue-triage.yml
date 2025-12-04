@@ -34,14 +34,14 @@ permissions:
 jobs:
   triage-issue:
     if: |-
-      github.repository == 'google-gemini/gemini-cli' &&
+      github.repository == 'huggingface/hf-cli' &&
       (
         github.event_name == 'workflow_dispatch' ||
         (
           (github.event_name == 'issues' || github.event_name == 'issue_comment') &&
           contains(github.event.issue.labels.*.name, 'status/need-triage') &&
           (github.event_name != 'issue_comment' || (
-            contains(github.event.comment.body, '@gemini-cli /triage') &&
+            contains(github.event.comment.body, '@hf-cli /triage') &&
             (github.event.comment.author_association == 'OWNER' || github.event.comment.author_association == 'MEMBER' || github.event.comment.author_association == 'COLLABORATOR')
           ))
         )
@@ -130,7 +130,7 @@ jobs:
             return labelNames;
 
       - name: 'Run Gemini Issue Analysis'
-        uses: 'google-github-actions/run-gemini-cli@a3bf79042542528e91937b3a3a6fbc4967ee3c31' # ratchet:google-github-actions/run-gemini-cli@v0
+        uses: 'google-github-actions/run-hf-cli@a3bf79042542528e91937b3a3a6fbc4967ee3c31' # ratchet:google-github-actions/run-hf-cli@v0
         id: 'gemini_issue_analysis'
         env:
           GITHUB_TOKEN: '' # Do not pass any auth token here since this runs on untrusted inputs
@@ -371,5 +371,5 @@ jobs:
               owner: context.repo.owner,
               repo: context.repo.repo,
               issue_number: parseInt(process.env.ISSUE_NUMBER),
-              body: 'There is a problem with the Gemini CLI issue triaging. Please check the [action logs](${process.env.RUN_URL}) for details.'
+              body: 'There is a problem with the HuggingFace CLI issue triaging. Please check the [action logs](${process.env.RUN_URL}) for details.'
             })

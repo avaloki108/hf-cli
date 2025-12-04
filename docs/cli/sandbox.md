@@ -1,14 +1,14 @@
-# Sandboxing in the Gemini CLI
+# Sandboxing in the HuggingFace CLI
 
-This document provides a guide to sandboxing in the Gemini CLI, including
+This document provides a guide to sandboxing in the HuggingFace CLI, including
 prerequisites, quickstart, and configuration.
 
 ## Prerequisites
 
-Before using sandboxing, you need to install and set up the Gemini CLI:
+Before using sandboxing, you need to install and set up the HuggingFace CLI:
 
 ```bash
-npm install -g @google/gemini-cli
+npm install -g @huggingface/hf-cli
 ```
 
 To verify the installation
@@ -144,8 +144,8 @@ DEBUG=1 gemini -s -p "debug command"
 ```
 
 **Note:** If you have `DEBUG=true` in a project's `.env` file, it won't affect
-gemini-cli due to automatic exclusion. Use `.gemini/.env` files for gemini-cli
-specific debug settings.
+hf-cli due to automatic exclusion. Use `.gemini/.env` files for hf-cli specific
+debug settings.
 
 ### Inspect sandbox
 

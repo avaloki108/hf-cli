@@ -1,13 +1,13 @@
 # Ignoring files
 
 This document provides an overview of the Gemini Ignore (`.geminiignore`)
-feature of the Gemini CLI.
+feature of the HuggingFace CLI.
 
-The Gemini CLI includes the ability to automatically ignore files, similar to
-`.gitignore` (used by Git) and `.aiexclude` (used by Gemini Code Assist). Adding
-paths to your `.geminiignore` file will exclude them from tools that support
-this feature, although they will still be visible to other services (such as
-Git).
+The HuggingFace CLI includes the ability to automatically ignore files, similar
+to `.gitignore` (used by Git) and `.aiexclude` (used by Gemini Code Assist).
+Adding paths to your `.geminiignore` file will exclude them from tools that
+support this feature, although they will still be visible to other services
+(such as Git).
 
 ## How it works
 
@@ -27,7 +27,7 @@ files:
 - `!` negates a pattern.
 
 You can update your `.geminiignore` file at any time. To apply the changes, you
-must restart your Gemini CLI session.
+must restart your HuggingFace CLI session.
 
 ## How to use `.geminiignore`
 

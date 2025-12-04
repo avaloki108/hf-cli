@@ -1,37 +1,39 @@
-# Get started with Gemini CLI
+# Get started with HuggingFace CLI
 
-Welcome to Gemini CLI! This guide will help you install, configure, and start
-using the Gemini CLI to enhance your workflow right from your terminal.
+Welcome to HuggingFace CLI! This guide will help you install, configure, and
+start using the HuggingFace CLI to enhance your workflow right from your
+terminal.
 
-## Quickstart: Install, authenticate, configure, and use Gemini CLI
+## Quickstart: Install, authenticate, configure, and use HuggingFace CLI
 
-Gemini CLI brings the power of advanced language models directly to your command
-line interface. As an AI-powered assistant, Gemini CLI can help you with a
-variety of tasks, from understanding and generating code to reviewing and
+HuggingFace CLI brings the power of advanced language models directly to your
+command line interface. As an AI-powered assistant, HuggingFace CLI can help you
+with a variety of tasks, from understanding and generating code to reviewing and
 editing documents.
 
 ## Install
 
-The standard method to install and run Gemini CLI uses `npm`:
+The standard method to install and run HuggingFace CLI uses `npm`:
 
 ```bash
-npm install -g @google/gemini-cli
+npm install -g @huggingface/hf-cli
 ```
 
-Once Gemini CLI is installed, run Gemini CLI from your command line:
+Once HuggingFace CLI is installed, run HuggingFace CLI from your command line:
 
 ```bash
 gemini
 ```
 
-For more installation options, see [Gemini CLI Installation](./installation.md).
+For more installation options, see
+[HuggingFace CLI Installation](./installation.md).
 
 ## Authenticate
 
-To begin using Gemini CLI, you must authenticate with a Google service. In most
-cases, you can log in with your existing Google account:
+To begin using HuggingFace CLI, you must authenticate with a Google service. In
+most cases, you can log in with your existing Google account:
 
-1. Run Gemini CLI after installation:
+1. Run HuggingFace CLI after installation:
 
    ```bash
    gemini
@@ -46,26 +48,27 @@ cases, you can log in with your existing Google account:
 
 Certain account types may require you to configure a Google Cloud project. For
 more information, including other authentication methods, see
-[Gemini CLI Authentication Setup](./authentication.md).
+[HuggingFace CLI Authentication Setup](./authentication.md).
 
 ## Configure
 
-Gemini CLI offers several ways to configure its behavior, including environment
-variables, command-line arguments, and settings files.
+HuggingFace CLI offers several ways to configure its behavior, including
+environment variables, command-line arguments, and settings files.
 
 To explore your configuration options, see
-[Gemini CLI Configuration](./configuration.md).
+[HuggingFace CLI Configuration](./configuration.md).
 
 ## Use
 
-Once installed and authenticated, you can start using Gemini CLI by issuing
+Once installed and authenticated, you can start using HuggingFace CLI by issuing
 commands and prompts in your terminal. Ask it to generate code, explain files,
 and more.
 
-To explore the power of Gemini CLI, see [Gemini CLI examples](./examples.md).
+To explore the power of HuggingFace CLI, see
+[HuggingFace CLI examples](./examples.md).
 
 ## What's next?
 
-- Find out more about [Gemini CLI's tools](../tools/index.md).
-- Review [Gemini CLI's commands](../cli/commands.md).
+- Find out more about [HuggingFace CLI's tools](../tools/index.md).
+- Review [HuggingFace CLI's commands](../cli/commands.md).
 - Learn how to [get started with Gemini 3](./gemini-3.md).

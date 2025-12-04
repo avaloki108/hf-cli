@@ -84,7 +84,7 @@ export function getEffectiveModel(
     return resolvedModel;
   }
 
-  // Default fallback for Gemini CLI.
+  // Default fallback for HuggingFace CLI.
   return DEFAULT_GEMINI_FLASH_MODEL;
 }
 

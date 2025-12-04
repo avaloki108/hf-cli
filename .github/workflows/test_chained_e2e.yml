@@ -30,7 +30,7 @@ jobs:
   merge_queue_skipper:
     name: 'Merge Queue Skipper'
     permissions: 'read-all'
-    runs-on: 'gemini-cli-ubuntu-16-core'
+    runs-on: 'hf-cli-ubuntu-16-core'
     outputs:
       skip: '${{ steps.merge-queue-e2e-skipper.outputs.skip-check }}'
     steps:
@@ -41,7 +41,7 @@ jobs:
     continue-on-error: true
 
   download_repo_name:
-    runs-on: 'gemini-cli-ubuntu-16-core'
+    runs-on: 'hf-cli-ubuntu-16-core'
     if: "github.event_name == 'workflow_dispatch' || github.event_name == 'workflow_run'"
     outputs:
       repo_name: '${{ steps.output-repo-name.outputs.repo_name }}'
@@ -80,7 +80,7 @@ jobs:
 
   parse_run_context:
     name: 'Parse run context'
-    runs-on: 'gemini-cli-ubuntu-16-core'
+    runs-on: 'hf-cli-ubuntu-16-core'
     needs: 'download_repo_name'
     if: 'always()'
     outputs:
@@ -98,7 +98,7 @@ jobs:
           echo "SHA=$SHA" >> "$GITHUB_OUTPUT"
 
   set_pending_status:
-    runs-on: 'gemini-cli-ubuntu-16-core'
+    runs-on: 'hf-cli-ubuntu-16-core'
     permissions: 'write-all'
     if: "github.event_name == 'workflow_dispatch' || github.event_name == 'workflow_run'"
     needs:
@@ -119,7 +119,7 @@ jobs:
     needs:
       - 'merge_queue_skipper'
       - 'parse_run_context'
-    runs-on: 'gemini-cli-ubuntu-16-core'
+    runs-on: 'hf-cli-ubuntu-16-core'
     if: |
       always() && (needs.merge_queue_skipper.result !='success' || needs.merge_queue_skipper.outputs.skip == 'false')
     strategy:
@@ -212,7 +212,7 @@ jobs:
       - 'parse_run_context'
     if: |
       always() && (needs.merge_queue_skipper.result !='success' || needs.merge_queue_skipper.outputs.skip == 'false')
-    runs-on: 'gemini-cli-windows-16-core'
+    runs-on: 'hf-cli-windows-16-core'
     continue-on-error: true
 
     steps:
@@ -274,7 +274,7 @@ jobs:
       - 'e2e_linux'
       - 'e2e_mac'
       - 'merge_queue_skipper'
-    runs-on: 'gemini-cli-ubuntu-16-core'
+    runs-on: 'hf-cli-ubuntu-16-core'
     steps:
       - name: 'Check E2E test results'
         run: |
@@ -286,7 +286,7 @@ jobs:
           echo "All required E2E jobs passed!"
 
   set_workflow_status:
-    runs-on: 'gemini-cli-ubuntu-16-core'
+    runs-on: 'hf-cli-ubuntu-16-core'
     permissions: 'write-all'
     if: "github.event_name == 'workflow_dispatch' || github.event_name == 'workflow_run'"
     needs:

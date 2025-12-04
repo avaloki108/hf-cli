@@ -1,8 +1,8 @@
-# Gemini CLI file system tools
+# HuggingFace CLI file system tools
 
-The Gemini CLI provides a comprehensive suite of tools for interacting with the
-local file system. These tools allow the Gemini model to read from, write to,
-list, search, and modify files and directories, all under your control and
+The HuggingFace CLI provides a comprehensive suite of tools for interacting with
+the local file system. These tools allow the Gemini model to read from, write
+to, list, search, and modify files and directories, all under your control and
 typically with confirmation for sensitive operations.
 
 **Note:** All file system tools operate within a `rootDirectory` (usually the
@@ -212,5 +212,5 @@ context around the `old_string` to ensure it modifies the correct location.
 - **Confirmation:** Yes. Shows a diff of the proposed changes and asks for user
   approval before writing to the file.
 
-These file system tools provide a foundation for the Gemini CLI to understand
-and interact with your local project context.
+These file system tools provide a foundation for the HuggingFace CLI to
+understand and interact with your local project context.

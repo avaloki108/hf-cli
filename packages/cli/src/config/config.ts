@@ -94,14 +94,13 @@ export async function parseArguments(settings: Settings): Promise<CliArgs> {
     .command(
       ['$0 [query..]', 'chat'],
       'Launch Hugging Face CLI',
-      (yargs) => {
-        return yargs.positional('query', {
+      (yargs) =>
+        yargs.positional('query', {
           describe:
             'Positional prompt. Defaults to one-shot; use -i/--prompt-interactive for interactive.',
           type: 'string',
-        });
-      },
-      () => { },
+        }),
+      () => {},
     )
     .command(mcpCommand)
     .command(extensionsCommand)
@@ -207,8 +206,7 @@ export async function parseArguments(settings: Settings): Promise<CliArgs> {
     })
     .option('list-sessions', {
       type: 'boolean',
-      description:
-        'List available sessions for the current project and exit.',
+      description: 'List available sessions for the current project and exit.',
     })
     .option('delete-session', {
       type: 'string',

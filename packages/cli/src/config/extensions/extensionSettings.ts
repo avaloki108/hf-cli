@@ -25,7 +25,7 @@ export interface ExtensionSetting {
 const getKeychainStorageName = (
   extensionName: string,
   extensionId: string,
-): string => `Gemini CLI Extensions ${extensionName} ${extensionId}`;
+): string => `HuggingFace CLI Extensions ${extensionName} ${extensionId}`;
 
 export async function maybePromptForSettings(
   extensionConfig: ExtensionConfig,

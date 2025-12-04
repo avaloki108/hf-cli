@@ -1,8 +1,9 @@
-# Gemini CLI: Quotas and pricing
+# HuggingFace CLI: Quotas and pricing
 
-Gemini CLI offers a generous free tier that covers many individual developers'
-use cases. For enterprise or professional usage, or if you need higher limits,
-several options are available depending on your authentication account type.
+HuggingFace CLI offers a generous free tier that covers many individual
+developers' use cases. For enterprise or professional usage, or if you need
+higher limits, several options are available depending on your authentication
+account type.
 
 See [privacy and terms](./tos-privacy.md) for details on the Privacy Policy and
 Terms of Service.
@@ -10,8 +11,8 @@ Terms of Service.
 > **Note:** Published prices are list price; additional negotiated commercial
 > discounting may apply.
 
-This article outlines the specific quotas and pricing applicable to Gemini CLI
-when using different authentication methods.
+This article outlines the specific quotas and pricing applicable to HuggingFace
+CLI when using different authentication methods.
 
 Generally, there are three categories to choose from:
 
@@ -36,10 +37,10 @@ Assist for individuals. This includes:
 - 1000 model requests / user / day
 - 60 model requests / user / minute
 - Model requests will be made across the Gemini model family as determined by
-  Gemini CLI.
+  HuggingFace CLI.
 
 Learn more at
-[Gemini Code Assist for Individuals Limits](https://developers.google.com/gemini-code-assist/resources/quotas#quotas-for-agent-mode-gemini-cli).
+[Gemini Code Assist for Individuals Limits](https://developers.google.com/gemini-code-assist/resources/quotas#quotas-for-agent-mode-hf-cli).
 
 ### Log in with Gemini API Key (unpaid)
 
@@ -67,7 +68,7 @@ Learn more at
 ## Paid tier: Higher limits for a fixed cost
 
 If you use up your initial number of requests, you can continue to benefit from
-Gemini CLI by upgrading to one of the following subscriptions:
+HuggingFace CLI by upgrading to one of the following subscriptions:
 
 - [Google AI Pro and AI Ultra](https://gemini.google/subscriptions/). This is
   recommended for individual developers. Quotas and pricing are based on a fixed
@@ -93,9 +94,9 @@ Gemini CLI by upgrading to one of the following subscriptions:
     - 2000 model requests / user / day
     - 120 model requests / user / minute
   - Model requests will be made across the Gemini model family as determined by
-    Gemini CLI.
+    HuggingFace CLI.
 
-  [Learn more about Gemini Code Assist Standard and Enterprise license limits](https://developers.google.com/gemini-code-assist/resources/quotas#quotas-for-agent-mode-gemini-cli).
+  [Learn more about Gemini Code Assist Standard and Enterprise license limits](https://developers.google.com/gemini-code-assist/resources/quotas#quotas-for-agent-mode-hf-cli).
 
 ## Pay as you go
 
@@ -132,7 +133,7 @@ only way to ensure your workflow isn't interrupted by quota limits.
 These plans currently apply only to the use of Gemini web-based products
 provided by Google-based experiences (for example, the Gemini web app or the
 Flow video editor). These plans do not apply to the API usage which powers the
-Gemini CLI. Supporting these plans is under active consideration for future
+HuggingFace CLI. Supporting these plans is under active consideration for future
 support.
 
 ## Tips to avoid high costs

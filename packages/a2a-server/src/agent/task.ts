@@ -27,7 +27,7 @@ import {
   type Config,
   type UserTierId,
   type AnsiOutput,
-} from '@google/gemini-cli-core';
+} from '@huggingface/hf-cli-core';
 import type { RequestContext } from '@a2a-js/sdk/server';
 import { type ExecutionEventBus } from '@a2a-js/sdk/server';
 import type {

@@ -1,14 +1,14 @@
-# Gemini CLI extensions
+# HuggingFace CLI extensions
 
 _This documentation is up-to-date with the v0.4.0 release._
 
-Gemini CLI extensions package prompts, MCP servers, and custom commands into a
-familiar and user-friendly format. With extensions, you can expand the
-capabilities of Gemini CLI and share those capabilities with others. They are
-designed to be easily installable and shareable.
+HuggingFace CLI extensions package prompts, MCP servers, and custom commands
+into a familiar and user-friendly format. With extensions, you can expand the
+capabilities of HuggingFace CLI and share those capabilities with others. They
+are designed to be easily installable and shareable.
 
 To see examples of extensions, you can browse a gallery of
-[Gemini CLI extensions](https://geminicli.com/extensions/browse/).
+[HuggingFace CLI extensions](https://geminicli.com/extensions/browse/).
 
 See [getting started docs](getting-started-extensions.md) for a guide on
 creating your first extension.
@@ -58,7 +58,7 @@ To uninstall one or more extensions, run
 `gemini extensions uninstall <name...>`:
 
 ```
-gemini extensions uninstall gemini-cli-security gemini-cli-another-extension
+gemini extensions uninstall hf-cli-security hf-cli-another-extension
 ```
 
 ### Disabling an extension
@@ -102,7 +102,7 @@ gemini extensions update --all
 
 We offer several example extensions `context`, `custom-commands`,
 `exclude-tools` and `mcp-server`. You can view these examples
-[here](https://github.com/google-gemini/gemini-cli/tree/main/packages/cli/src/commands/extensions/examples).
+[here](https://github.com/huggingface/hf-cli/tree/main/packages/cli/src/commands/extensions/examples).
 
 To copy one of these examples into a development directory using the type of
 your choosing, run:
@@ -130,7 +130,7 @@ gemini extensions link <path>
 
 ## How it works
 
-On startup, Gemini CLI looks for extensions in `<home>/.gemini/extensions`
+On startup, HuggingFace CLI looks for extensions in `<home>/.gemini/extensions`
 
 Extensions exist as a directory that contains a `gemini-extension.json` file.
 For example:
@@ -151,7 +151,7 @@ The file has the following structure:
       "command": "node my-server.js"
     }
   },
-  "contextFileName": "GEMINI.md",
+  "contextFileName": "HF.md",
   "excludeTools": ["run_shell_command"]
 }
 ```
@@ -173,8 +173,8 @@ The file has the following structure:
     `trust`.
 - `contextFileName`: The name of the file that contains the context for the
   extension. This will be used to load the context from the extension directory.
-  If this property is not used but a `GEMINI.md` file is present in your
-  extension directory, then that file will be loaded.
+  If this property is not used but a `HF.md` file is present in your extension
+  directory, then that file will be loaded.
 - `excludeTools`: An array of tool names to exclude from the model. You can also
   specify command-specific restrictions for tools that support it, like the
   `run_shell_command` tool. For example,
@@ -182,7 +182,7 @@ The file has the following structure:
   command. Note that this differs from the MCP server `excludeTools`
   functionality, which can be listed in the MCP server config.
 
-When Gemini CLI starts, it loads all the extensions and merges their
+When HuggingFace CLI starts, it loads all the extensions and merges their
 configurations. If there are any conflicts, the workspace configuration takes
 precedence.
 
@@ -277,9 +277,9 @@ For example, if both a user and the `gcp` extension define a `deploy` command:
 
 ## Variables
 
-Gemini CLI extensions allow variable substitution in `gemini-extension.json`.
-This can be useful if e.g., you need the current directory to run an MCP server
-using `"cwd": "${extensionPath}${/}run.ts"`.
+HuggingFace CLI extensions allow variable substitution in
+`gemini-extension.json`. This can be useful if e.g., you need the current
+directory to run an MCP server using `"cwd": "${extensionPath}${/}run.ts"`.
 
 **Supported variables:**
 

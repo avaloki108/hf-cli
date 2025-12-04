@@ -1,4 +1,4 @@
-# Gemini CLI configuration
+# HuggingFace CLI configuration
 
 > **Note on configuration format, 9/17/25:** The format of the `settings.json`
 > file has been updated to a new, more organized structure.
@@ -11,9 +11,9 @@
 > For details on the previous format, please see the
 > [v1 Configuration documentation](./configuration-v1.md).
 
-Gemini CLI offers several ways to configure its behavior, including environment
-variables, command-line arguments, and settings files. This document outlines
-the different configuration methods and available settings.
+HuggingFace CLI offers several ways to configure its behavior, including
+environment variables, command-line arguments, and settings files. This document
+outlines the different configuration methods and available settings.
 
 ## Configuration layers
 
@@ -33,17 +33,17 @@ overridden by higher numbers):
 
 ## Settings files
 
-Gemini CLI uses JSON settings files for persistent configuration. There are four
-locations for these files:
+HuggingFace CLI uses JSON settings files for persistent configuration. There are
+four locations for these files:
 
 > **Tip:** JSON-aware editors can use autocomplete and validation by pointing to
 > the generated schema at `schemas/settings.schema.json` in this repository.
 > When working outside the repo, reference the hosted schema at
-> `https://raw.githubusercontent.com/google-gemini/gemini-cli/main/schemas/settings.schema.json`.
+> `https://raw.githubusercontent.com/huggingface/hf-cli/main/schemas/settings.schema.json`.
 
 - **System defaults file:**
-  - **Location:** `/etc/gemini-cli/system-defaults.json` (Linux),
-    `C:\ProgramData\gemini-cli\system-defaults.json` (Windows) or
+  - **Location:** `/etc/hf-cli/system-defaults.json` (Linux),
+    `C:\ProgramData\hf-cli\system-defaults.json` (Windows) or
     `/Library/Application Support/GeminiCli/system-defaults.json` (macOS). The
     path can be overridden using the `GEMINI_CLI_SYSTEM_DEFAULTS_PATH`
     environment variable.
@@ -52,22 +52,22 @@ locations for these files:
     user, project, or system override settings.
 - **User settings file:**
   - **Location:** `~/.gemini/settings.json` (where `~` is your home directory).
-  - **Scope:** Applies to all Gemini CLI sessions for the current user. User
-    settings override system defaults.
+  - **Scope:** Applies to all HuggingFace CLI sessions for the current user.
+    User settings override system defaults.
 - **Project settings file:**
   - **Location:** `.gemini/settings.json` within your project's root directory.
-  - **Scope:** Applies only when running Gemini CLI from that specific project.
-    Project settings override user settings and system defaults.
+  - **Scope:** Applies only when running HuggingFace CLI from that specific
+    project. Project settings override user settings and system defaults.
 - **System settings file:**
-  - **Location:** `/etc/gemini-cli/settings.json` (Linux),
-    `C:\ProgramData\gemini-cli\settings.json` (Windows) or
+  - **Location:** `/etc/hf-cli/settings.json` (Linux),
+    `C:\ProgramData\hf-cli\settings.json` (Windows) or
     `/Library/Application Support/GeminiCli/settings.json` (macOS). The path can
     be overridden using the `GEMINI_CLI_SYSTEM_SETTINGS_PATH` environment
     variable.
-  - **Scope:** Applies to all Gemini CLI sessions on the system, for all users.
-    System settings act as overrides, taking precedence over all other settings
-    files. May be useful for system administrators at enterprises to have
-    controls over users' Gemini CLI setups.
+  - **Scope:** Applies to all HuggingFace CLI sessions on the system, for all
+    users. System settings act as overrides, taking precedence over all other
+    settings files. May be useful for system administrators at enterprises to
+    have controls over users' HuggingFace CLI setups.
 
 **Note on environment variables in settings:** String values within your
 `settings.json` and `gemini-extension.json` files can reference environment
@@ -84,7 +84,8 @@ this: `"apiKey": "$MY_API_TOKEN"`. Additionally, each extension can have its own
 ### The `.gemini` directory in your project
 
 In addition to a project settings file, a project's `.gemini` directory can
-contain other project-specific files related to Gemini CLI's operation, such as:
+contain other project-specific files related to HuggingFace CLI's operation,
+such as:
 
 - [Custom sandbox profiles](#sandboxing) (e.g.,
   `.gemini/sandbox-macos-custom.sb`, `.gemini/sandbox.Dockerfile`).
@@ -180,8 +181,8 @@ their corresponding top-level category object in your `settings.json` file.
   - **Requires restart:** Yes
 
 - **`ui.showStatusInTitle`** (boolean):
-  - **Description:** Show Gemini CLI status and thoughts in the terminal window
-    title
+  - **Description:** Show HuggingFace CLI status and thoughts in the terminal
+    window title
   - **Default:** `false`
 
 - **`ui.hideTips`** (boolean):
@@ -193,7 +194,7 @@ their corresponding top-level category object in your `settings.json` file.
   - **Default:** `false`
 
 - **`ui.hideContextSummary`** (boolean):
-  - **Description:** Hide the context summary (GEMINI.md, MCP servers) above the
+  - **Description:** Hide the context summary (HF.md, MCP servers) above the
     input.
   - **Default:** `false`
 
@@ -551,9 +552,9 @@ their corresponding top-level category object in your `settings.json` file.
   - **Default:** `[]`
 
 - **`context.loadMemoryFromIncludeDirectories`** (boolean):
-  - **Description:** Controls how /memory refresh loads GEMINI.md files. When
-    true, include directories are scanned; when false, only the current
-    directory is used.
+  - **Description:** Controls how /memory refresh loads HF.md files. When true,
+    include directories are scanned; when false, only the current directory is
+    used.
   - **Default:** `false`
 
 - **`context.fileFiltering.respectGitIgnore`** (boolean):
@@ -673,9 +674,9 @@ their corresponding top-level category object in your `settings.json` file.
 
 - **`tools.enableHooks`** (boolean):
   - **Description:** Enable the hooks system for intercepting and customizing
-    Gemini CLI behavior. When enabled, hooks configured in settings will execute
-    at appropriate lifecycle events (BeforeTool, AfterTool, BeforeModel, etc.).
-    Requires MessageBus integration.
+    HuggingFace CLI behavior. When enabled, hooks configured in settings will
+    execute at appropriate lifecycle events (BeforeTool, AfterTool, BeforeModel,
+    etc.). Requires MessageBus integration.
   - **Default:** `false`
   - **Requires restart:** Yes
 
@@ -885,7 +886,7 @@ their corresponding top-level category object in your `settings.json` file.
 #### `mcpServers`
 
 Configures connections to one or more Model-Context Protocol (MCP) servers for
-discovering and using custom tools. Gemini CLI attempts to connect to each
+discovering and using custom tools. HuggingFace CLI attempts to connect to each
 configured MCP server to discover available tools. If multiple MCP servers
 expose a tool with the same name, the tool names will be prefixed with the
 server alias you defined in the configuration (e.g.,
@@ -927,8 +928,8 @@ specified, the order of precedence is `httpUrl`, then `url`, then `command`.
 
 #### `telemetry`
 
-Configures logging and metrics collection for Gemini CLI. For more information,
-see [Telemetry](../cli/telemetry.md).
+Configures logging and metrics collection for HuggingFace CLI. For more
+information, see [Telemetry](../cli/telemetry.md).
 
 - **Properties:**
   - **`enabled`** (boolean): Whether or not telemetry is enabled.
@@ -1002,7 +1003,7 @@ of v0.3.0:
     }
   },
   "context": {
-    "fileName": ["CONTEXT.md", "GEMINI.md"],
+    "fileName": ["CONTEXT.md", "HF.md"],
     "includeDirectories": ["path/to/dir1", "~/path/to/dir2", "../path/to/dir3"],
     "loadFromIncludeDirectories": true,
     "fileFiltering": {
@@ -1045,7 +1046,7 @@ loading order is:
 
 **Environment variable exclusion:** Some environment variables (like `DEBUG` and
 `DEBUG_MODE`) are automatically excluded from being loaded from project `.env`
-files to prevent interference with gemini-cli behavior. Variables from
+files to prevent interference with hf-cli behavior. Variables from
 `.gemini/.env` files are never excluded. You can customize this behavior using
 the `advanced.excludedEnvVars` setting in your `settings.json` file.
 
@@ -1127,8 +1128,8 @@ the `advanced.excludedEnvVars` setting in your `settings.json` file.
   - Set to `true` or `1` to enable verbose debug logging, which can be helpful
     for troubleshooting.
   - **Note:** These variables are automatically excluded from project `.env`
-    files by default to prevent interference with gemini-cli behavior. Use
-    `.gemini/.env` files if you need to set these for gemini-cli specifically.
+    files by default to prevent interference with hf-cli behavior. Use
+    `.gemini/.env` files if you need to set these for hf-cli specifically.
 - **`NO_COLOR`**:
   - Set to any value to disable all color output in the CLI.
 - **`CLI_TITLE`**:
@@ -1146,8 +1147,8 @@ for that specific session.
   - Specifies the Gemini model to use for this session.
   - Example: `npm start -- --model gemini-1.5-pro-latest`
 - **`--prompt <your_prompt>`** (**`-p <your_prompt>`**):
-  - Used to pass a prompt directly to the command. This invokes Gemini CLI in a
-    non-interactive mode.
+  - Used to pass a prompt directly to the command. This invokes HuggingFace CLI
+    in a non-interactive mode.
   - For scripting examples, use the `--output-format json` flag to get
     structured output.
 - **`--prompt-interactive <your_prompt>`** (**`-i <your_prompt>`**):
@@ -1235,8 +1236,8 @@ for that specific session.
 ## Context files (hierarchical instructional context)
 
 While not strictly configuration for the CLI's _behavior_, context files
-(defaulting to `GEMINI.md` but configurable via the `context.fileName` setting)
-are crucial for configuring the _instructional context_ (also referred to as
+(defaulting to `HF.md` but configurable via the `context.fileName` setting) are
+crucial for configuring the _instructional context_ (also referred to as
 "memory") provided to the Gemini model. This powerful feature allows you to give
 project-specific instructions, coding style guides, or any relevant background
 information to the AI, making its responses more tailored and accurate to your
@@ -1248,7 +1249,7 @@ context.
   that you want the Gemini model to be aware of during your interactions. The
   system is designed to manage this instructional context hierarchically.
 
-### Example context file content (e.g., `GEMINI.md`)
+### Example context file content (e.g., `HF.md`)
 
 Here's a conceptual example of what a context file at the root of a TypeScript
 project might contain:
@@ -1290,14 +1291,14 @@ you. Project-specific context files are highly encouraged to establish
 conventions and context.
 
 - **Hierarchical loading and precedence:** The CLI implements a sophisticated
-  hierarchical memory system by loading context files (e.g., `GEMINI.md`) from
+  hierarchical memory system by loading context files (e.g., `HF.md`) from
   several locations. Content from files lower in this list (more specific)
   typically overrides or supplements content from files higher up (more
   general). The exact concatenation order and final context can be inspected
   using the `/memory show` command. The typical loading order is:
   1.  **Global context file:**
       - Location: `~/.gemini/<configured-context-filename>` (e.g.,
-        `~/.gemini/GEMINI.md` in your user home directory).
+        `~/.gemini/HF.md` in your user home directory).
       - Scope: Provides default instructions for all your projects.
   2.  **Project root and ancestors context files:**
       - Location: The CLI searches for the configured context file in the
@@ -1333,12 +1334,13 @@ conventions and context.
 
 By understanding and utilizing these configuration layers and the hierarchical
 nature of context files, you can effectively manage the AI's memory and tailor
-the Gemini CLI's responses to your specific needs and projects.
+the HuggingFace CLI's responses to your specific needs and projects.
 
 ## Sandboxing
 
-The Gemini CLI can execute potentially unsafe operations (like shell commands
-and file modifications) within a sandboxed environment to protect your system.
+The HuggingFace CLI can execute potentially unsafe operations (like shell
+commands and file modifications) within a sandboxed environment to protect your
+system.
 
 Sandboxing is disabled by default, but you can enable it in a few ways:
 
@@ -1346,14 +1348,14 @@ Sandboxing is disabled by default, but you can enable it in a few ways:
 - Setting `GEMINI_SANDBOX` environment variable.
 - Sandbox is enabled when using `--yolo` or `--approval-mode=yolo` by default.
 
-By default, it uses a pre-built `gemini-cli-sandbox` Docker image.
+By default, it uses a pre-built `hf-cli-sandbox` Docker image.
 
 For project-specific sandboxing needs, you can create a custom Dockerfile at
 `.gemini/sandbox.Dockerfile` in your project's root directory. This Dockerfile
 can be based on the base sandbox image:
 
 ```dockerfile
-FROM gemini-cli-sandbox
+FROM hf-cli-sandbox
 
 # Add your custom dependencies or configurations here
 # For example:
@@ -1362,8 +1364,8 @@ FROM gemini-cli-sandbox
 ```
 
 When `.gemini/sandbox.Dockerfile` exists, you can use `BUILD_SANDBOX`
-environment variable when running Gemini CLI to automatically build the custom
-sandbox image:
+environment variable when running HuggingFace CLI to automatically build the
+custom sandbox image:
 
 ```bash
 BUILD_SANDBOX=1 gemini -s
@@ -1371,8 +1373,8 @@ BUILD_SANDBOX=1 gemini -s
 
 ## Usage statistics
 
-To help us improve the Gemini CLI, we collect anonymized usage statistics. This
-data helps us understand how the CLI is used, identify common issues, and
+To help us improve the HuggingFace CLI, we collect anonymized usage statistics.
+This data helps us understand how the CLI is used, identify common issues, and
 prioritize new features.
 
 **What we collect:**

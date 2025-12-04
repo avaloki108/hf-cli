@@ -13,7 +13,7 @@ import os from 'node:os';
 import { spawnSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import crypto from 'node:crypto';
-import { GEMINI_DIR } from '@google/gemini-cli-core';
+import { GEMINI_DIR } from '@huggingface/hf-cli-core';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -40,14 +40,11 @@ export const WORKSPACE_SETTINGS_FILE = path.join(
 );
 
 export function getJson(url) {
-  const tmpFile = path.join(
-    os.tmpdir(),
-    `gemini-cli-releases-${Date.now()}.json`,
-  );
+  const tmpFile = path.join(os.tmpdir(), `hf-cli-releases-${Date.now()}.json`);
   try {
     const result = spawnSync(
       'curl',
-      ['-sL', '-H', 'User-Agent: gemini-cli-dev-script', '-o', tmpFile, url],
+      ['-sL', '-H', 'User-Agent: hf-cli-dev-script', '-o', tmpFile, url],
       { stdio: 'pipe', encoding: 'utf-8' },
     );
     if (result.status !== 0) {
@@ -251,9 +248,7 @@ export async function ensureBinary(
   }
 
   const downloadUrl = asset.browser_download_url;
-  const tmpDir = fs.mkdtempSync(
-    path.join(os.tmpdir(), 'gemini-cli-telemetry-'),
-  );
+  const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'hf-cli-telemetry-'));
   const archivePath = path.join(tmpDir, asset.name);
 
   try {
