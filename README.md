@@ -8,17 +8,14 @@
 
 ![HuggingFace CLI Screenshot](./docs/assets/hf-screenshot.png)
 
-HuggingFace CLI is an open-source AI agent that brings the power of Gemini
-directly into your terminal. It provides lightweight access to Gemini, giving
+HuggingFace CLI is an open-source AI agent that brings the power of huggingface.co/chat
+directly into your terminal. It provides lightweight access to HuggingFace, giving
 you the most direct path from your prompt to our model.
 
 Learn all about HuggingFace CLI in our [documentation](https://hfcli.com/docs/).
 
 ## 🚀 Why HuggingFace CLI?
 
-- **🎯 Free tier**: 60 requests/min and 1,000 requests/day with personal Google
-  account.
-- **🧠 Powerful Gemini 2.5 Pro**: Access to 1M token context window.
 - **🔧 Built-in tools**: Google Search grounding, file operations, shell
   commands, web fetching.
 - **🔌 Extensible**: MCP (Model Context Protocol) support for custom
@@ -39,13 +36,13 @@ Learn all about HuggingFace CLI in our [documentation](https://hfcli.com/docs/).
 
 ```bash
 # Using npx (no installation required)
-npx https://github.com/huggingface/hf-cli
+npx https://github.com/avaloki108/hf-cli
 ```
 
 #### Install globally with npm
 
 ```bash
-npm install -g @huggingface/hf-cli
+npm install -g @avaloki108/hf-cli
 ```
 
 #### Install globally with Homebrew (macOS/Linux)
@@ -65,7 +62,7 @@ releases will not have been fully vetted and may contain regressions or other
 outstanding issues. Please help us test and install with `preview` tag.
 
 ```bash
-npm install -g @huggingface/hf-cli@preview
+npm install -g @avaloki108/hf-cli@preview
 ```
 
 ### Stable
@@ -75,7 +72,7 @@ npm install -g @huggingface/hf-cli@preview
   and validations. Use `latest` tag.
 
 ```bash
-npm install -g @huggingface/hf-cli@latest
+npm install -g @avaloki108/hf-cli@latest
 ```
 
 ### Nightly
@@ -85,7 +82,7 @@ npm install -g @huggingface/hf-cli@latest
   there are pending validations and issues. Use `nightly` tag.
 
 ```bash
-npm install -g @huggingface/hf-cli@nightly
+npm install -g @avaloki108/hf-cli@nightly
 ```
 
 ## 📋 Key Features
@@ -100,15 +97,11 @@ npm install -g @huggingface/hf-cli@nightly
 
 - Automate operational tasks like querying pull requests or handling complex
   rebases
-- Use MCP servers to connect new capabilities, including
-  [media generation with Imagen, Veo or Lyria](https://github.com/GoogleCloudPlatform/vertex-ai-creative-studio/tree/main/experiments/mcp-genmedia)
+- Use MCP servers to connect new capabilities
 - Run non-interactively in scripts for workflow automation
 
 ### Advanced Capabilities
 
-- Ground your queries with built-in
-  [Google Search](https://ai.google.dev/gemini-api/docs/grounding) for real-time
-  information
 - Conversation checkpointing to save and resume complex sessions
 - Custom context files (HF.md) to tailor behavior for your projects
 
@@ -132,67 +125,43 @@ Choose the authentication method that best fits your needs:
 
 ### Option 1: Login with Google (OAuth login using your Google Account)
 
-**✨ Best for:** Individual developers as well as anyone who has a Gemini Code
-Assist License. (see
-[quota limits and terms of service](https://cloud.google.com/gemini/docs/quotas)
-for details)
+**✨ Best for:** Individual developers as well as anyone who has a HuggingFace Token
 
 **Benefits:**
 
-- **Free tier**: 60 requests/min and 1,000 requests/day
-- **Gemini 2.5 Pro** with 1M token context window
-- **No API key management** - just sign in with your Google account
+- ** **
 - **Automatic updates** to latest models
 
-#### Start HuggingFace CLI, then choose _Login with Google_ and follow the browser authentication flow when prompted
+#### Start HuggingFace CLI, then choose _Login with HuggingFace_ and follow the browser authentication flow when prompted
 
 ```bash
 hf
 ```
 
-#### If you are using a paid Code Assist License from your organization, remember to set the Google Cloud Project
 
-```bash
-# Set your Google Cloud Project
-export GOOGLE_CLOUD_PROJECT="YOUR_PROJECT_ID"
-hf
-```
+### Option 2: HuggingFace API Key / Token
 
-### Option 2: Gemini API Key
-
-**✨ Best for:** Developers who need specific model control or paid tier access
+**✨ Best for:** Developers who need .......
 
 **Benefits:**
 
-- **Free tier**: 100 requests/day with Gemini 2.5 Pro
-- **Model selection**: Choose specific Gemini models
-- **Usage-based billing**: Upgrade for higher limits when needed
+- ****: 
+- **Model selection**: Choose specific models
+- ****: 
 
-```bash
-# Get your key from https://aistudio.google.com/apikey
-export GEMINI_API_KEY="YOUR_API_KEY"
-hf
-```
 
-### Option 3: Vertex AI
 
-**✨ Best for:** Enterprise teams and production workloads
+### Option 3: 
+
+**✨ Best for:** 
 
 **Benefits:**
 
-- **Enterprise features**: Advanced security and compliance
-- **Scalable**: Higher rate limits with billing account
-- **Integration**: Works with existing Google Cloud infrastructure
+- ****: 
+- ****: 
+- ****: 
 
-```bash
-# Get your key from Google Cloud Console
-export GOOGLE_API_KEY="YOUR_API_KEY"
-export GOOGLE_GENAI_USE_VERTEXAI=true
-hf
-```
 
-For Google Workspace accounts and other authentication methods, see the
-[authentication guide](./docs/get-started/authentication.md).
 
 ## 🚀 Getting Started
 
@@ -207,13 +176,14 @@ hf
 #### Include multiple directories
 
 ```bash
-gemini --include-directories ../lib,../docs
+hf --include-directories ../lib,../docs
 ```
 
 #### Use specific model
 
 ```bash
-gemini -m gemini-2.5-flash
+hf -m deepseek-ai/DeepSeek-V3.2
+
 ```
 
 #### Non-interactive mode for scripts
@@ -221,21 +191,21 @@ gemini -m gemini-2.5-flash
 Get a simple text response:
 
 ```bash
-gemini -p "Explain the architecture of this codebase"
+hf -p "Explain the architecture of this codebase"
 ```
 
 For more advanced scripting, including how to parse JSON and handle errors, use
 the `--output-format json` flag to get structured output:
 
 ```bash
-gemini -p "Explain the architecture of this codebase" --output-format json
+hf -p "Explain the architecture of this codebase" --output-format json
 ```
 
 For real-time event streaming (useful for monitoring long-running operations),
 use `--output-format stream-json` to get newline-delimited JSON events:
 
 ```bash
-gemini -p "Run tests and deploy" --output-format stream-json
+hf -p "Run tests and deploy" --output-format stream-json
 ```
 
 ### Quick Examples
@@ -251,7 +221,7 @@ hf
 #### Analyze existing code
 
 ```bash
-git clone https://github.com/huggingface/hf-cli
+git clone https://github.com/avaloki108/hf-cli
 cd hf-cli
 hf
 > Give me a summary of all of the changes that went in yesterday
@@ -320,7 +290,7 @@ hf
 
 ### Using MCP Servers
 
-Configure MCP servers in `~/.gemini/settings.json` to extend HuggingFace CLI
+Configure MCP servers in `~/.hf-cli/settings.json` to extend HuggingFace CLI
 with custom tools:
 
 ```text
@@ -369,8 +339,4 @@ See the [Uninstall Guide](docs/cli/uninstall.md) for removal instructions.
 - **Terms of Service**: [Terms & Privacy](./docs/tos-privacy.md)
 - **Security**: [Security Policy](SECURITY.md)
 
----
 
-<p align="center">
-  Built with ❤️ by Google and the open source community
-</p>
