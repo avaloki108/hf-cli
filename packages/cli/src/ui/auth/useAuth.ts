@@ -80,6 +80,10 @@ export const useAuthCommand = (settings: LoadedSettings, config: Config) => {
           onAuthError(
             'Existing API key detected (GEMINI_API_KEY). Select "Gemini API Key" option to use it.',
           );
+        } else if (process.env['HF_TOKEN']) {
+          onAuthError(
+            'Existing HuggingFace token detected (HF_TOKEN). Select "Use HuggingFace Token" option to use it.',
+          );
         } else {
           onAuthError('No authentication method selected.');
         }
@@ -89,6 +93,13 @@ export const useAuthCommand = (settings: LoadedSettings, config: Config) => {
       if (authType === AuthType.USE_GEMINI) {
         const key = await reloadApiKey(); // Use the unified function
         if (!key) {
+          setAuthState(AuthState.AwaitingApiKeyInput);
+          return;
+        }
+      }
+
+      if (authType === AuthType.USE_HF) {
+        if (!process.env['HF_TOKEN']) {
           setAuthState(AuthState.AwaitingApiKeyInput);
           return;
         }

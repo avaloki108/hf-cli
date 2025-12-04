@@ -533,17 +533,27 @@ Logging in with Google... Restarting HuggingFace CLI to continue.
           return;
         }
 
-        await saveApiKey(apiKey);
-        await reloadApiKey();
-        await config.refreshAuth(AuthType.USE_GEMINI);
-        setAuthState(AuthState.Authenticated);
+        const selectedAuthType = settings.merged.security?.auth?.selectedType;
+
+        if (selectedAuthType === AuthType.USE_HF) {
+          // For HuggingFace, set the HF_TOKEN environment variable
+          process.env['HF_TOKEN'] = apiKey;
+          await config.refreshAuth(AuthType.USE_HF);
+          setAuthState(AuthState.Authenticated);
+        } else {
+          // For Gemini API key
+          await saveApiKey(apiKey);
+          await reloadApiKey();
+          await config.refreshAuth(AuthType.USE_GEMINI);
+          setAuthState(AuthState.Authenticated);
+        }
       } catch (e) {
         onAuthError(
           `Failed to save API key: ${e instanceof Error ? e.message : String(e)}`,
         );
       }
     },
-    [setAuthState, onAuthError, reloadApiKey, config],
+    [setAuthState, onAuthError, reloadApiKey, config, settings],
   );
 
   const handleApiKeyCancel = useCallback(() => {
