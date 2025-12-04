@@ -145,7 +145,7 @@ hf
 **Benefits:**
 
 - **Access to HuggingFace models**: Use models from
-  https://huggingface.co/chat/models
+  https://huggingface.co/models
 - **Model selection**: Choose specific models with the `-m` flag
 - **Simple setup**: Just set your HF_TOKEN environment variable
 

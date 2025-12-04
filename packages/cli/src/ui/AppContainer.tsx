@@ -536,8 +536,13 @@ Logging in with Google... Restarting HuggingFace CLI to continue.
         const selectedAuthType = settings.merged.security?.auth?.selectedType;
 
         if (selectedAuthType === AuthType.USE_HF) {
+          // Basic validation for HuggingFace token format
+          if (!apiKey || apiKey.trim().length === 0) {
+            onAuthError('HuggingFace token cannot be empty.');
+            return;
+          }
           // For HuggingFace, set the HF_TOKEN environment variable
-          process.env['HF_TOKEN'] = apiKey;
+          process.env['HF_TOKEN'] = apiKey.trim();
           await config.refreshAuth(AuthType.USE_HF);
           setAuthState(AuthState.Authenticated);
         } else {
