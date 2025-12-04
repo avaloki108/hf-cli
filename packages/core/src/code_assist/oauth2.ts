@@ -113,7 +113,7 @@ async function initOauthClient(
   if (
     credentials &&
     (credentials as { type?: string }).type ===
-    'external_account_authorized_user'
+      'external_account_authorized_user'
   ) {
     const auth = new GoogleAuth({
       scopes: OAUTH_SCOPE,
@@ -236,13 +236,13 @@ async function initOauthClient(
         if (!success) {
           writeToStderr(
             '\nFailed to authenticate with user code.' +
-            (i === maxRetries - 1 ? '' : ' Retrying...\n'),
+              (i === maxRetries - 1 ? '' : ' Retrying...\n'),
           );
         }
       }
     } finally {
       exitAlternateScreen();
-      // If this was triggered from an active Gemini CLI TUI this event ensures
+      // If this was triggered from an active HuggingFace CLI TUI this event ensures
       // the TUI will re-initialize the terminal state just like it will when
       // another editor like VIM may have modified the buffer of settings.
       coreEvents.emit(CoreEvent.ExternalEditorClosed);
@@ -305,7 +305,7 @@ async function initOauthClient(
         reject(
           new FatalAuthenticationError(
             'Authentication timed out after 5 minutes. The browser tab may have gotten stuck in a loading state. ' +
-            'Please try again or use NO_BROWSER=true for manual authentication.',
+              'Please try again or use NO_BROWSER=true for manual authentication.',
           ),
         );
       }, authTimeout);
@@ -347,8 +347,8 @@ async function authWithUserCode(client: OAuth2Client): Promise<boolean> {
     });
     writeToStdout(
       'Please visit the following URL to authorize the application:\n\n' +
-      authUrl +
-      '\n\n',
+        authUrl +
+        '\n\n',
     );
 
     const code = await new Promise<string>((resolve, _) => {
@@ -380,8 +380,8 @@ async function authWithUserCode(client: OAuth2Client): Promise<boolean> {
     } catch (error) {
       writeToStderr(
         'Failed to authenticate with authorization code:' +
-        getErrorMessage(error) +
-        '\n',
+          getErrorMessage(error) +
+          '\n',
       );
 
       debugLogger.error(

@@ -13,7 +13,7 @@ import os from 'node:os';
 import { spawnSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import crypto from 'node:crypto';
-import { GEMINI_DIR } from '@google/hf-cli-core';
+import { GEMINI_DIR } from '@huggingface/hf-cli-core';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);

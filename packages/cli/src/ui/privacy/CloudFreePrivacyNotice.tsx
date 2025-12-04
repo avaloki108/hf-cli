@@ -85,9 +85,9 @@ export const CloudFreePrivacyNotice = ({
       </Text>
       <Newline />
       <Text color={theme.text.primary}>
-        When you use Gemini Code Assist for individuals with Gemini CLI, Google
-        collects your prompts, related code, generated output, code edits,
-        related feature usage information, and your feedback to provide,
+        When you use Gemini Code Assist for individuals with HuggingFace CLI,
+        Google collects your prompts, related code, generated output, code
+        edits, related feature usage information, and your feedback to provide,
         improve, and develop Google products and services and machine learning
         technologies.
       </Text>

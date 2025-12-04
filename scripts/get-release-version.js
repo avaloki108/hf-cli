@@ -39,9 +39,9 @@ function getArgs() {
     })
     .option('cli-package-name', {
       description:
-        'fully qualified package name with scope (e.g @google/hf-cli)',
+        'fully qualified package name with scope (e.g @huggingface/hf-cli)',
       string: true,
-      default: '@google/hf-cli',
+      default: '@huggingface/hf-cli',
     })
     .option('preview_version_override', {
       description: 'Override the calculated preview version.',

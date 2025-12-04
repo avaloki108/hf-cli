@@ -90,20 +90,23 @@ if (!argv.s) {
   execSync('npm run build --workspaces', { stdio: 'inherit' });
 }
 
-console.log('packing @google/hf-cli ...');
+console.log('packing @huggingface/hf-cli ...');
 const cliPackageDir = join('packages', 'cli');
 rmSync(join(cliPackageDir, 'dist', 'google-hf-cli-*.tgz'), { force: true });
-execSync(`npm pack -w @google/hf-cli --pack-destination ./packages/cli/dist`, {
-  stdio: 'ignore',
-});
+execSync(
+  `npm pack -w @huggingface/hf-cli --pack-destination ./packages/cli/dist`,
+  {
+    stdio: 'ignore',
+  },
+);
 
-console.log('packing @google/hf-cli-core ...');
+console.log('packing @huggingface/hf-cli-core ...');
 const corePackageDir = join('packages', 'core');
 rmSync(join(corePackageDir, 'dist', 'google-hf-cli-core-*.tgz'), {
   force: true,
 });
 execSync(
-  `npm pack -w @google/hf-cli-core --pack-destination ./packages/core/dist`,
+  `npm pack -w @huggingface/hf-cli-core --pack-destination ./packages/core/dist`,
   { stdio: 'ignore' },
 );
 

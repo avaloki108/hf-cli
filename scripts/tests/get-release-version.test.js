@@ -55,7 +55,10 @@ describe('getVersion', () => {
     if (command.includes('git rev-parse --short HEAD')) return 'd3bf8a3d';
 
     // For doesVersionExist checks - default to not found
-    if (command.includes('npm view') && command.includes('@google/hf-cli@')) {
+    if (
+      command.includes('npm view') &&
+      command.includes('@huggingface/hf-cli@')
+    ) {
       throw new Error('NPM version not found');
     }
     if (command.includes('git tag -l')) return '';
@@ -124,7 +127,7 @@ describe('getVersion', () => {
         // Mock the deprecation check
         if (
           command.includes(
-            'npm view @google/hf-cli@0.9.0-nightly.20250917.deprecated deprecated',
+            'npm view @huggingface/hf-cli@0.9.0-nightly.20250917.deprecated deprecated',
           )
         )
           return 'This version is deprecated';
@@ -163,10 +166,18 @@ describe('getVersion', () => {
     it('should auto-increment preview number if the calculated one already exists', () => {
       const mockWithConflict = (command) => {
         // The calculated preview 0.8.0-preview.0 already exists on NPM
-        if (command.includes('npm view @google/hf-cli@0.8.0-preview.0 version'))
+        if (
+          command.includes(
+            'npm view @huggingface/hf-cli@0.8.0-preview.0 version',
+          )
+        )
           return '0.8.0-preview.0';
         // The next one is available
-        if (command.includes('npm view @google/hf-cli@0.8.0-preview.1 version'))
+        if (
+          command.includes(
+            'npm view @huggingface/hf-cli@0.8.0-preview.1 version',
+          )
+        )
           throw new Error('Not found');
 
         return mockExecSync(command);

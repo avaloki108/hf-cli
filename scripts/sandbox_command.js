@@ -25,7 +25,7 @@ import os from 'node:os';
 import yargs from 'yargs';
 import { hideBin } from 'yargs/helpers';
 import dotenv from 'dotenv';
-import { GEMINI_DIR } from '@google/hf-cli-core';
+import { GEMINI_DIR } from '@huggingface/hf-cli-core';
 
 const argv = yargs(hideBin(process.argv)).option('q', {
   alias: 'quiet',
