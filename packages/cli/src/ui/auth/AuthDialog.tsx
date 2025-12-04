@@ -74,6 +74,11 @@ export function AuthDialog({
       value: AuthType.USE_VERTEX_AI,
       key: AuthType.USE_VERTEX_AI,
     },
+    {
+      label: 'Use HuggingFace Token',
+      value: AuthType.USE_HF,
+      key: AuthType.USE_HF,
+    },
   ];
 
   if (settings.merged.security?.auth?.enforcedType) {
@@ -136,6 +141,16 @@ export function AuthDialog({
 
         if (authType === AuthType.USE_GEMINI) {
           if (isInitialAuthSelection && process.env['GEMINI_API_KEY']) {
+            setAuthState(AuthState.Unauthenticated);
+            return;
+          } else {
+            setAuthState(AuthState.AwaitingApiKeyInput);
+            return;
+          }
+        }
+
+        if (authType === AuthType.USE_HF) {
+          if (isInitialAuthSelection && process.env['HF_TOKEN']) {
             setAuthState(AuthState.Unauthenticated);
             return;
           } else {

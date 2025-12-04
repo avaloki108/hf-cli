@@ -10,12 +10,14 @@ import { theme } from '../semantic-colors.js';
 import { TextInput } from '../components/shared/TextInput.js';
 import { useTextBuffer } from '../components/shared/text-buffer.js';
 import { useUIState } from '../contexts/UIStateContext.js';
+import { AuthType } from '@huggingface/hf-cli-core';
 
 interface ApiAuthDialogProps {
   onSubmit: (apiKey: string) => void;
   onCancel: () => void;
   error?: string | null;
   defaultValue?: string;
+  authType?: AuthType;
 }
 
 export function ApiAuthDialog({
@@ -23,9 +25,21 @@ export function ApiAuthDialog({
   onCancel,
   error,
   defaultValue = '',
+  authType = AuthType.USE_GEMINI,
 }: ApiAuthDialogProps): React.JSX.Element {
   const { mainAreaWidth } = useUIState();
   const viewportWidth = mainAreaWidth - 8;
+
+  const isHuggingFace = authType === AuthType.USE_HF;
+  const title = isHuggingFace
+    ? 'Enter HuggingFace Token'
+    : 'Enter Gemini API Key';
+  const description = isHuggingFace
+    ? 'Please enter your HuggingFace token. It will be stored as the HF_TOKEN environment variable.'
+    : 'Please enter your Gemini API key. It will be securely stored in your system keychain.';
+  const linkText = isHuggingFace
+    ? 'https://huggingface.co/settings/tokens'
+    : 'https://aistudio.google.com/app/apikey';
 
   const buffer = useTextBuffer({
     initialText: defaultValue || '',
@@ -53,18 +67,13 @@ export function ApiAuthDialog({
       width="100%"
     >
       <Text bold color={theme.text.primary}>
-        Enter Gemini API Key
+        {title}
       </Text>
       <Box marginTop={1} flexDirection="column">
-        <Text color={theme.text.primary}>
-          Please enter your Gemini API key. It will be securely stored in your
-          system keychain.
-        </Text>
+        <Text color={theme.text.primary}>{description}</Text>
         <Text color={theme.text.secondary}>
-          You can get an API key from{' '}
-          <Text color={theme.text.link}>
-            https://aistudio.google.com/app/apikey
-          </Text>
+          You can get {isHuggingFace ? 'a token' : 'an API key'} from{' '}
+          <Text color={theme.text.link}>{linkText}</Text>
         </Text>
       </Box>
       <Box marginTop={1} flexDirection="row">
@@ -78,7 +87,11 @@ export function ApiAuthDialog({
             buffer={buffer}
             onSubmit={handleSubmit}
             onCancel={onCancel}
-            placeholder="Paste your API key here"
+            placeholder={
+              isHuggingFace
+                ? 'Paste your token here'
+                : 'Paste your API key here'
+            }
           />
         </Box>
       </Box>
