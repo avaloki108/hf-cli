@@ -8,9 +8,9 @@
 
 ![HuggingFace CLI Screenshot](./docs/assets/hf-screenshot.png)
 
-HuggingFace CLI is an open-source AI agent that brings the power of huggingface.co/chat
-directly into your terminal. It provides lightweight access to HuggingFace, giving
-you the most direct path from your prompt to our model.
+HuggingFace CLI is an open-source AI agent that brings the power of
+huggingface.co/chat directly into your terminal. It provides lightweight access
+to HuggingFace, giving you the most direct path from your prompt to our model.
 
 Learn all about HuggingFace CLI in our [documentation](https://hfcli.com/docs/).
 
@@ -125,43 +125,80 @@ Choose the authentication method that best fits your needs:
 
 ### Option 1: Login with Google (OAuth login using your Google Account)
 
-**✨ Best for:** Individual developers as well as anyone who has a HuggingFace Token
+**✨ Best for:** Individual developers using Gemini models
 
 **Benefits:**
 
-- ** **
+- **Seamless authentication** through Google account
 - **Automatic updates** to latest models
 
-#### Start HuggingFace CLI, then choose _Login with HuggingFace_ and follow the browser authentication flow when prompted
+#### Start HuggingFace CLI, then choose _Login with Google_ and follow the browser authentication flow when prompted
 
 ```bash
 hf
 ```
 
+### Option 2: HuggingFace Token
 
-### Option 2: HuggingFace API Key / Token
-
-**✨ Best for:** Developers who need .......
-
-**Benefits:**
-
-- ****: 
-- **Model selection**: Choose specific models
-- ****: 
-
-
-
-### Option 3: 
-
-**✨ Best for:** 
+**✨ Best for:** Developers who want to use HuggingFace models
 
 **Benefits:**
 
-- ****: 
-- ****: 
-- ****: 
+- **Access to HuggingFace models**: Use models from
+  https://huggingface.co/chat/models
+- **Model selection**: Choose specific models with the `-m` flag
+- **Simple setup**: Just set your HF_TOKEN environment variable
 
+#### Set your HuggingFace token as an environment variable
 
+```bash
+export HF_TOKEN="your_huggingface_token_here"
+hf
+```
+
+Or provide it when prompted in the CLI after selecting "Use HuggingFace Token"
+from the authentication menu.
+
+You can get a HuggingFace token from
+[https://huggingface.co/settings/tokens](https://huggingface.co/settings/tokens)
+
+### Option 3: Gemini API Key
+
+**✨ Best for:** Developers who want to use Gemini API directly
+
+**Benefits:**
+
+- **Direct API access**: Use Gemini API without OAuth
+- **API key management**: Store API key securely in system keychain
+- **Flexible deployment**: Works in CI/CD environments
+
+#### Set your API key as an environment variable or provide it when prompted
+
+```bash
+export GEMINI_API_KEY="your_api_key_here"
+hf
+```
+
+You can get an API key from
+[https://aistudio.google.com/app/apikey](https://aistudio.google.com/app/apikey)
+
+### Option 4: Vertex AI
+
+**✨ Best for:** Enterprise users with Google Cloud projects
+
+**Benefits:**
+
+- **Enterprise features**: Use Google Cloud's enterprise features
+- **Billing integration**: Integrated with Google Cloud billing
+- **Advanced security**: Leverage Google Cloud security features
+
+#### Set your Google Cloud project and location
+
+```bash
+export GOOGLE_CLOUD_PROJECT="your-project-id"
+export GOOGLE_CLOUD_LOCATION="us-central1"
+hf
+```
 
 ## 🚀 Getting Started
 
@@ -182,8 +219,24 @@ hf --include-directories ../lib,../docs
 #### Use specific model
 
 ```bash
-hf -m deepseek-ai/DeepSeek-V3.2
+# Use a specific HuggingFace model
+hf -m Qwen/Qwen2.5-Coder-32B-Instruct
 
+# Or use DeepSeek
+hf -m deepseek-ai/DeepSeek-V3.2
+```
+
+#### Use HuggingFace models
+
+```bash
+# Set your HuggingFace token
+export HF_TOKEN="your_token_here"
+
+# Start the CLI and select "Use HuggingFace Token" from the auth menu
+hf
+
+# Or use a specific HuggingFace model directly
+hf -m "meta-llama/Llama-3.3-70B-Instruct"
 ```
 
 #### Non-interactive mode for scripts
@@ -338,5 +391,3 @@ See the [Uninstall Guide](docs/cli/uninstall.md) for removal instructions.
 - **License**: [Apache License 2.0](LICENSE)
 - **Terms of Service**: [Terms & Privacy](./docs/tos-privacy.md)
 - **Security**: [Security Policy](SECURITY.md)
-
-
