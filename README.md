@@ -190,12 +190,7 @@ Contributions are welcome! Please submit pull requests to the [GitHub repository
 
 ## 📄 Legal
 
-<<<<<<< HEAD
-- **License**: Apache 2.0
-=======
 - **License**: [Apache License 2.0](LICENSE)
 - **Terms of Service**: [Terms & Privacy](./docs/tos-privacy.md)
 - **Security**: [Security Policy](SECURITY.md)
-
->>>>>>> a0d66d72d50d885e6151fcf1682d4061fab69482
 
