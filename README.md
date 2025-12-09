@@ -2,18 +2,24 @@
 
 [![Hugging Face CLI CI](https://github.com/avaloki108/hf-cli/actions/workflows/ci.yml/badge.svg)](https://github.com/avaloki108/hf-cli/actions/workflows/ci.yml)
 
-Hugging Face CLI (`hf`) is an open-source AI agent that brings the power of Hugging Face's Inference API directly into your terminal. It allows you to interact with state-of-the-art open models like DeepSeek, Llama, and Qwen right from your command line.
+Hugging Face CLI (`hf`) is an open-source AI agent that brings the power of
+Hugging Face's Inference API directly into your terminal. It allows you to
+interact with state-of-the-art open models like DeepSeek, Llama, and Qwen right
+from your command line.
 
 ## 🚀 Key Features
 
-- **Access Top Open Models**: Use models like `deepseek-ai/DeepSeek-V3.2-Exp`, `meta-llama/Llama-3.1-8B-Instruct`, and more via the Hugging Face Router.
-- **Terminal-First Experience**: Designed for developers who live in the command line.
+- **Access Top Open Models**: Use models like `deepseek-ai/DeepSeek-V3.2-Exp`,
+  `meta-llama/Llama-3.1-8B-Instruct`, and more via the Hugging Face Router.
+- **Terminal-First Experience**: Designed for developers who live in the command
+  line.
 - **Context-Aware**: Can read files and understand your project structure.
 - **Extensible**: Support for custom tools and MCP (Model Context Protocol).
 
 ## 📦 Installation
 
 ### Prerequisites
+
 - Node.js version 20 or higher
 
 ### Install globally with npm
@@ -22,15 +28,18 @@ Hugging Face CLI (`hf`) is an open-source AI agent that brings the power of Hugg
 npm install -g @huggingface/hf-cli
 ```
 
-*(Note: Package name subject to change upon publication)*
+_(Note: Package name subject to change upon publication)_
 
 ## 🔐 Authentication
 
 To use the Hugging Face CLI, you need a Hugging Face Access Token.
 
-1.  **Get your token**: Go to [https://huggingface.co/settings/tokens](https://huggingface.co/settings/tokens) and create a new token (Read access is sufficient).
-2.  **Set the environment variable**:
-    You can set the `HF_TOKEN` environment variable in your shell or in a `.env` file in your project or home directory (`~/.hf-cli/.env`).
+1.  **Get your token**: Go to
+    [https://huggingface.co/settings/tokens](https://huggingface.co/settings/tokens)
+    and create a new token (Read access is sufficient).
+2.  **Set the environment variable**: You can set the `HF_TOKEN` environment
+    variable in your shell or in a `.env` file in your project or home directory
+    (`~/.hf-cli/.env`).
 
 ```bash
 npm install -g @avaloki108/hf-cli@preview
@@ -96,11 +105,12 @@ Choose the authentication method that best fits your needs:
 
 ### Option 1: Login with Google (OAuth login using your Google Account)
 
-**✨ Best for:** Individual developers as well as anyone who has a HuggingFace Token
+**✨ Best for:** Individual developers as well as anyone who has a HuggingFace
+Token
 
 **Benefits:**
 
-- ** **
+- ***
 - **Automatic updates** to latest models
 
 #### Start HuggingFace CLI, then choose _Login with HuggingFace_ and follow the browser authentication flow when prompted
@@ -109,30 +119,25 @@ Choose the authentication method that best fits your needs:
 hf
 ```
 
-
 ### Option 2: HuggingFace API Key / Token
 
 **✨ Best for:** Developers who need .......
 
 **Benefits:**
 
-- ****: 
+- \*\*\*\*:
 - **Model selection**: Choose specific models
-- ****: 
+- \*\*\*\*:
 
+### Option 3:
 
-
-### Option 3: 
-
-**✨ Best for:** 
+**✨ Best for:**
 
 **Benefits:**
 
-- ****: 
-- ****: 
-- ****: 
-
-
+- \*\*\*\*:
+- \*\*\*\*:
+- \*\*\*\*:
 
 ## 🚀 Getting Started
 
@@ -154,13 +159,15 @@ hf -p "What is the capital of France?"
 
 ### Select a Model
 
-Specify a model using the `-m` flag. The default model is `deepseek-ai/DeepSeek-V3.2-Exp`.
+Specify a model using the `-m` flag. The default model is
+`deepseek-ai/DeepSeek-V3.2-Exp`.
 
 ```bash
 hf -m meta-llama/Llama-3.1-8B-Instruct
 ```
 
 **Supported Models:**
+
 - `deepseek-ai/DeepSeek-V3.2`
 - `deepseek-ai/DeepSeek-V3.2-Exp` (Default)
 - `moonshotai/Kimi-K2-Thinking`
@@ -182,20 +189,16 @@ hf --include-directories ./src
 
 ## 📂 Configuration
 
-Global configuration is stored in `~/.hf-cli`. You can place a `.env` file there to persist your `HF_TOKEN`.
+Global configuration is stored in `~/.hf-cli`. You can place a `.env` file there
+to persist your `HF_TOKEN`.
 
 ## 🤝 Contributing
 
-Contributions are welcome! Please submit pull requests to the [GitHub repository](https://github.com/avaloki108/hf-cli).
+Contributions are welcome! Please submit pull requests to the
+[GitHub repository](https://github.com/avaloki108/hf-cli).
 
 ## 📄 Legal
 
-<<<<<<< HEAD
-- **License**: Apache 2.0
-=======
 - **License**: [Apache License 2.0](LICENSE)
 - **Terms of Service**: [Terms & Privacy](./docs/tos-privacy.md)
 - **Security**: [Security Policy](SECURITY.md)
-
->>>>>>> a0d66d72d50d885e6151fcf1682d4061fab69482
-
